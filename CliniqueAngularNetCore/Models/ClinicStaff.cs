@@ -5,11 +5,18 @@ using System.Threading.Tasks;
 
 namespace CliniqueAngularNetCore.Models
 {
+    public enum Position { 
+        Doctor,
+        Nurse,
+        Therapist,
+        Physician,
+        Receptionist
+    }
     public class ClinicStaff
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Position { get; set; }
+        public Position Position { get; set; }
         public DateTime EmploymentDate { get; set; }
         public int Salary { get; set; }
     }
