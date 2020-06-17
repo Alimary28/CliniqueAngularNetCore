@@ -10,7 +10,8 @@ namespace CliniqueAngularNetCore.Models
         Nurse,
         Therapist,
         Physician,
-        Receptionist
+        Receptionist,
+        Manager
     }
     public class ClinicStaff
     {
