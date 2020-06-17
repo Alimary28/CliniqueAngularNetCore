@@ -38,7 +38,7 @@ namespace CliniqueAngularNetCore.Controllers
                 result = result.Where(s => s.Type.ToLower().Contains(searchString) || 
                                            s.Description.ToLower().Contains(searchString));
             }
-            var medicalServices = await result.ToListAsync();
+            var medicalServices = await result.OrderByDescending(s => s.Price).ToListAsync();
 
             return Ok(medicalServices);
         }
