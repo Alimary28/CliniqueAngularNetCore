@@ -4,14 +4,16 @@ using CliniqueAngularNetCore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CliniqueAngularNetCore.Migrations
 {
     [DbContext(typeof(CliniqueDbContext))]
-    partial class CliniqueDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200617134901_AddClinicStaffToMedicalServices")]
+    partial class AddClinicStaffToMedicalServices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

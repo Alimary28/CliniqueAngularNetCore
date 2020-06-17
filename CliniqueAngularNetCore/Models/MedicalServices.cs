@@ -8,7 +8,8 @@ namespace CliniqueAngularNetCore.Models
     public enum Domain { 
         Orthopedics,
         Cardiology,
-        Physiokinetotherapy
+        Physiokinetotherapy,
+        Surgery
 
     }
     public class MedicalServices
@@ -19,6 +20,6 @@ namespace CliniqueAngularNetCore.Models
         public string Description { get; set; }
         public int Minutes { get; set; }
         public int Price { get; set; }
-
+        public List<ClinicStaff> Staffs { get; set; }
     }
 }
