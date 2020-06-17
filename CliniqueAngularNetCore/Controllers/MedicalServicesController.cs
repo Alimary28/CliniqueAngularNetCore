@@ -21,12 +21,27 @@ namespace CliniqueAngularNetCore.Controllers
         }
 
         // GET: api/MedicalServices
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<MedicalServices>>> GetMedicalServices()
-        {
-            return await _context.MedicalServices.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<MedicalServices>>> GetMedicalServices()
+        //{
+        //    return await _context.MedicalServices.ToListAsync();
+        //}
 
+        //GET: api/MedicalServices
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MedicalServices>>> GetMedicalServices(string searchString=null)
+        {
+            var result = _context.MedicalServices as IQueryable<MedicalServices>;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                result = result.Where(s => s.Type.ToLower().Contains(searchString) || 
+                                           s.Description.ToLower().Contains(searchString));
+            }
+            var medicalServices = await result.ToListAsync();
+
+            return Ok(medicalServices);
+        }
         // GET: api/MedicalServices/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MedicalServices>> GetMedicalServices(long id)
