@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using CliniqueAngularNetCore.Services;
 using CliniqueAngularNetCore.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CliniqueAngularNetCore.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
-    {
+
         [Authorize]
         [ApiController]
         [Route("[controller]")]
@@ -68,5 +61,4 @@ namespace CliniqueAngularNetCore.Controllers
                 return long.Parse(idClaim);
             }
         }
-    }
 }
