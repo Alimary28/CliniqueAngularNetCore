@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CliniqueAngularNetCore.Helpers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace CliniqueAngularNetCore.Models
@@ -13,6 +13,20 @@ namespace CliniqueAngularNetCore.Models
             using (var context = new CliniqueDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<CliniqueDbContext>>()))
             {
+                if (!context.Users.Any())
+                {
+                    context.Users.Add(new User
+                    {
+                        FirstName = "First",
+                        LastName = "Last",
+                        Username = "FirstUser",
+                        Email = "first@gmail.com",
+                        Phone = 0264231341,
+                        Password = HashUtils.GetHashString("parolasigura")
+                    });
+                    context.SaveChanges();
+                }
+
                 // Look for any movies.
                 if (context.MedicalServices.Any())
                 {

@@ -6,18 +6,25 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './fetch-data.component.html'
 })
 export class FetchDataComponent {
-  public forecasts: WeatherForecast[];
+  
+    public services: MedicalServices[];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-      this.forecasts = result;
-    }, error => console.error(error));
+      http.get<MedicalServices[]>(baseUrl + 'api/MedicalServices').subscribe(result => {
+          this.services = result;
+      }, error => console.error(error));
   }
 }
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+enum Domain {
+    Orthopedics=0,
+    Cardiology=1,
+    Physiokinetotherapy=2,
+    Surgery=3
+}
+interface MedicalServices {
+    id: number;
+    domain: Domain;
+    type: string,
+    description: string;
 }

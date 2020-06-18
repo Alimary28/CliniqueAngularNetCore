@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CliniqueAngularNetCore.Models;
+using CliniqueAngularNetCore.ViewModels;
 
 namespace CliniqueAngularNetCore.Controllers
 {
@@ -30,7 +31,7 @@ namespace CliniqueAngularNetCore.Controllers
         //GET: api/MedicalServices
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<MedicalServices>>> GetMedicalServices(string searchString=null)
+        public async Task<ActionResult<IEnumerable<MedicalServiceDto>>> GetMedicalServices(string searchString=null)
         {
             var result = _context.MedicalServices as IQueryable<MedicalServices>;
 
@@ -39,7 +40,13 @@ namespace CliniqueAngularNetCore.Controllers
                 result = result.Where(s => s.Type.ToLower().Contains(searchString) || 
                                            s.Description.ToLower().Contains(searchString));
             }
-            var medicalServices = await result.OrderByDescending(s => s.Price).ToListAsync();
+            var medicalServices = await result.Select(s => new MedicalServiceDto
+            {
+                Id = s.Id,
+                Domain = s.Domain,
+                Type = s.Type,
+                Description = s.Description
+            }).ToListAsync();
 
             return Ok(medicalServices);
         }
@@ -54,16 +61,20 @@ namespace CliniqueAngularNetCore.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<MedicalServices>> GetMedicalServices(long id)
+        public async Task<ActionResult<MedicalServicesDetails>> GetMedicalServices(long id)
         {
-            var medicalServices = await _context.MedicalServices.FindAsync(id);
+            var medicalServices = await _context
+                .MedicalServices
+                .Include(s => s.Staffs)
+                .FirstOrDefaultAsync(s => s.Id == id);
 
             if (medicalServices == null)
             {
                 return NotFound();
             }
 
-            return medicalServices;
+            return MedicalServicesDetails.FromMedicalServices(medicalServices);
+           
         }
 
         // PUT: api/MedicalServices/5

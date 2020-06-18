@@ -32,11 +32,14 @@ namespace CliniqueAngularNetCore.Migrations
                     b.Property<DateTime>("EmploymentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("MedicalServicesId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("MedicalServicesId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("Position")
                         .HasColumnType("int");
@@ -78,10 +81,66 @@ namespace CliniqueAngularNetCore.Migrations
                     b.ToTable("MedicalServices");
                 });
 
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("ClinicStaffId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("MedicalServicesId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Phone")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClinicStaffId");
+
+                    b.HasIndex("MedicalServicesId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("CliniqueAngularNetCore.Models.ClinicStaff", b =>
                 {
                     b.HasOne("CliniqueAngularNetCore.Models.MedicalServices", "MedicalServices")
                         .WithMany("Staffs")
+                        .HasForeignKey("MedicalServicesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.User", b =>
+                {
+                    b.HasOne("CliniqueAngularNetCore.Models.ClinicStaff", null)
+                        .WithMany("Users")
+                        .HasForeignKey("ClinicStaffId");
+
+                    b.HasOne("CliniqueAngularNetCore.Models.MedicalServices", null)
+                        .WithMany("Users")
                         .HasForeignKey("MedicalServicesId");
                 });
 #pragma warning restore 612, 618

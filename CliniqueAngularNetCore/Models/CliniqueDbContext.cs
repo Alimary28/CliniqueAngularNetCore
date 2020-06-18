@@ -10,5 +10,7 @@ namespace CliniqueAngularNetCore.Models
         }
         public DbSet<MedicalServices> MedicalServices { get; set; }
         public DbSet<ClinicStaff> Staffs { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
+

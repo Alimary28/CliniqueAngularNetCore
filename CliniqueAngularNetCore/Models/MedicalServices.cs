@@ -21,5 +21,6 @@ namespace CliniqueAngularNetCore.Models
         public int Minutes { get; set; }
         public int Price { get; set; }
         public List<ClinicStaff> Staffs { get; set; }
+        public List<User> Users { get; set; }
     }
 }
