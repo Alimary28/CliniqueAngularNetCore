@@ -12,7 +12,7 @@ namespace CliniqueAngularNetCore.Models
         Surgery
 
     }
-    public class MedicalServices
+    public class MedicalService
     {
         public long Id { get; set; }
         public Domain Domain { get; set; }
@@ -21,6 +21,6 @@ namespace CliniqueAngularNetCore.Models
         public int Minutes { get; set; }
         public int Price { get; set; }
         public List<ClinicStaff> Staffs { get; set; }
-        public List<User> Users { get; set; }
+        
     }
 }

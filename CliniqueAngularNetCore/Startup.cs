@@ -5,8 +5,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +17,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace CliniqueAngularNetCore
 {
@@ -47,6 +47,21 @@ namespace CliniqueAngularNetCore
             })
             .AddJwtBearer(x =>
             {
+                x.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                        var userId = int.Parse(context.Principal.Identity.Name);
+                        var user = userService.GetById(userId);
+                        if (user == null)
+                        {
+                            // return unauthorized if user no longer exists
+                            context.Fail("Unauthorized");
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
                 x.RequireHttpsMetadata = false;
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
@@ -60,8 +75,7 @@ namespace CliniqueAngularNetCore
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-
-
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //services.AddControllersWithViews();
             services
                 .AddControllers()
@@ -71,7 +85,7 @@ namespace CliniqueAngularNetCore
                 options.JsonSerializerOptions.IgnoreNullValues = true;
             })
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
-
+            
             services.AddDbContext<CliniqueDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CliniqueDbConnectionString")));
 
             //Register the Swagger generator, defining 1 or more Swagger documents  

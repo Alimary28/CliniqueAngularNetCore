@@ -15,11 +15,15 @@ namespace CliniqueAngularNetCore.Services
     {
         User Authenticate(string username, string password);
         IEnumerable<User> GetAll();
-        //Task<User> CreateUser(UserForCreation user);
-        // Task<bool> UsernameExists(string username);
+        User GetById(long id);
+        User Register(User user);
+        void Update(User user);
+        void Delete(long id);
+        bool UsernameExists(string username);
     }
 
     public class UserService : IUserService
+
     {
 
         private CliniqueDbContext _dbContext;
@@ -56,24 +60,59 @@ namespace CliniqueAngularNetCore.Services
 
             return user;
         }
+        public User GetById(long id)
+        {
+            return _dbContext.Users.Find(id);
+        }
 
-        //public async Task<User> CreateUser(UserForCreation user)
-        //{
-        //    var userEntity = _mapper.Map<User>(user);
-        //    _dbContext.Users.Add(userEntity);
-        //    await _dbContext.SaveChangesAsync();
+        public User Register (User user)
+        {
+            if (_dbContext.Users.Any(x => x.Username == user.Username))
+                throw new AppException("Username \"" + user.Username + "\" is already taken");
+            user.Password = HashUtils.GetHashString(user.Password);
+            _dbContext.Users.Add(user);
+            _dbContext.SaveChanges();
 
-        //    return userEntity;
-        //}
+            return user;
+        }
+
+        public void Update(User userParam)
+        {
+            var user = _dbContext.Users.Find(userParam.Id);
+
+            if (user == null)
+                throw new AppException("User not found");
+
+            if (_dbContext.Users.Any(x => x.Username == userParam.Username))
+                throw new AppException("Username " + userParam.Username + " is already taken");
+
+            user.Username = userParam.Username;
+            user.FirstName = userParam.FirstName;
+            user.LastName = userParam.LastName;
+            user.Email = userParam.Email;
+
+            _dbContext.Users.Update(user);
+            _dbContext.SaveChanges();
+        }
 
         public IEnumerable<User> GetAll()
         {
             return _dbContext.Users.ToList();
         }
 
-        //public async Task<bool> UsernameExists(string username)
-        //{
-        //    return await _dbContext.Users.FirstOrDefaultAsync(u => u.Username == username) != null;
-        //}
+        public void Delete(long id)
+        {
+            var user = _dbContext.Users.Find(id);
+            if (user != null)
+            {
+                _dbContext.Users.Remove(user);
+                _dbContext.SaveChanges();
+            }
+        }
+
+        public bool UsernameExists(string username)
+        {
+            return _dbContext.Users.FirstOrDefault(u => u.Username == username) != null;
+        }
     }
 }

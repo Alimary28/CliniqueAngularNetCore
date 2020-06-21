@@ -23,9 +23,9 @@ namespace CliniqueAngularNetCore.Models
         public Position Position { get; set; }
         public DateTime EmploymentDate { get; set; }
         public int Salary { get; set; }
-        public MedicalServices MedicalServices { get; set; }
-        public List<User> Users { get; set; }
+        public MedicalService MedicalService { get; set; }
         public long MedicalServicesId { get; set; }
+
     }
 }
 

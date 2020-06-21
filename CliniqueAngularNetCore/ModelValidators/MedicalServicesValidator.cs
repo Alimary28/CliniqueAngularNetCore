@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CliniqueAngularNetCore.ModelValidators
 {
-    public class MedicalServicesValidator : AbstractValidator<MedicalServices>
+    public class MedicalServicesValidator : AbstractValidator<MedicalService>
     {
         public MedicalServicesValidator()
         {

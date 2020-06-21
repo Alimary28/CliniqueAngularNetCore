@@ -33,7 +33,7 @@ namespace CliniqueAngularNetCore.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<MedicalServiceDto>>> GetMedicalServices(string searchString=null)
         {
-            var result = _context.MedicalServices as IQueryable<MedicalServices>;
+            var result = _context.MedicalServices as IQueryable<MedicalService>;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -93,7 +93,7 @@ namespace CliniqueAngularNetCore.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutMedicalServices(long id, MedicalServices medicalServices)
+        public async Task<IActionResult> PutMedicalServices(long id, MedicalService medicalServices)
         {
             if (id != medicalServices.Id)
             {
@@ -132,7 +132,7 @@ namespace CliniqueAngularNetCore.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<MedicalServices>> PostMedicalServices(MedicalServices medicalServices)
+        public async Task<ActionResult<MedicalService>> PostMedicalServices(MedicalService medicalServices)
         {
             _context.MedicalServices.Add(medicalServices);
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace CliniqueAngularNetCore.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<MedicalServices>> DeleteMedicalServices(long id)
+        public async Task<ActionResult<MedicalService>> DeleteMedicalServices(long id)
         {
             var medicalServices = await _context.MedicalServices.FindAsync(id);
             if (medicalServices == null)

@@ -18,6 +18,8 @@
 	</PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.5" />
@@ -38,6 +40,15 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200621075032_AddAppointmentAndLinksWithOthers.cs" />
+    <Compile Remove="Migrations\20200621075032_AddAppointmentAndLinksWithOthers.Designer.cs" />
+    <Compile Remove="Migrations\20200621081426_AppointmentUniqueIdPairs.cs" />
+    <Compile Remove="Migrations\20200621081426_AppointmentUniqueIdPairs.Designer.cs" />
+    <Compile Remove="Migrations\20200621102258_AddUniqueKeys.cs" />
+    <Compile Remove="Migrations\20200621102258_AddUniqueKeys.Designer.cs" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

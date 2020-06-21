@@ -34,7 +34,7 @@ namespace CliniqueAngularNetCore.Models
                 }
 
                 context.MedicalServices.AddRange(
-                    new MedicalServices
+                    new MedicalService
                     {
                        Domain = Domain.Orthopedics,
                        Type  = "Treatment",
@@ -43,7 +43,7 @@ namespace CliniqueAngularNetCore.Models
                        Price = 150
                     },
 
-                     new MedicalServices
+                     new MedicalService
                      {
                          Domain = Domain.Orthopedics,
                          Type = "Treatment",
@@ -52,7 +52,7 @@ namespace CliniqueAngularNetCore.Models
                          Price = 465
                      },
 
-                     new MedicalServices
+                     new MedicalService
                      {
                          Domain=Domain.Cardiology,
                          Type = "Consultation",
@@ -60,7 +60,7 @@ namespace CliniqueAngularNetCore.Models
                          Minutes = 45,
                          Price = 380
                      },
-                     new MedicalServices
+                     new MedicalService
                      {
                          Domain = Domain.Physiokinetotherapy,
                          Type = "Consultation",

@@ -8,9 +8,18 @@ namespace CliniqueAngularNetCore.Models
             : base(options)
         { 
         }
-        public DbSet<MedicalServices> MedicalServices { get; set; }
+        public DbSet<MedicalService> MedicalServices { get; set; }
         public DbSet<ClinicStaff> Staffs { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Appointment>()
+                .HasIndex(a => new { a.ClinicStaffId, a.UserId })
+                .IsUnique(true);
+        }
     }
 }
 

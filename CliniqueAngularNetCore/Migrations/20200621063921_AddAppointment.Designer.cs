@@ -4,14 +4,16 @@ using CliniqueAngularNetCore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CliniqueAngularNetCore.Migrations
 {
     [DbContext(typeof(CliniqueDbContext))]
-    partial class CliniqueDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200621063921_AddAppointment")]
+    partial class AddAppointment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,7 +31,7 @@ namespace CliniqueAngularNetCore.Migrations
                     b.Property<DateTime>("AppointmentTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("ClinicStaffId")
+                    b.Property<long>("MedicalServicesId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Reason")
@@ -40,10 +42,9 @@ namespace CliniqueAngularNetCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("MedicalServicesId");
 
-                    b.HasIndex("ClinicStaffId", "UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Appointments");
                 });
@@ -67,9 +68,6 @@ namespace CliniqueAngularNetCore.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("MedicalServiceId")
-                        .HasColumnType("bigint");
-
                     b.Property<long>("MedicalServicesId")
                         .HasColumnType("bigint");
 
@@ -81,12 +79,12 @@ namespace CliniqueAngularNetCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MedicalServiceId");
+                    b.HasIndex("MedicalServicesId");
 
                     b.ToTable("Staffs");
                 });
 
-            modelBuilder.Entity("CliniqueAngularNetCore.Models.MedicalService", b =>
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.MedicalServices", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,6 +118,9 @@ namespace CliniqueAngularNetCore.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long?>("ClinicStaffId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -128,6 +129,9 @@ namespace CliniqueAngularNetCore.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("MedicalServicesId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
@@ -143,14 +147,18 @@ namespace CliniqueAngularNetCore.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClinicStaffId");
+
+                    b.HasIndex("MedicalServicesId");
+
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CliniqueAngularNetCore.Models.Appointment", b =>
                 {
-                    b.HasOne("CliniqueAngularNetCore.Models.ClinicStaff", "ClinicStaff")
+                    b.HasOne("CliniqueAngularNetCore.Models.MedicalServices", "MedicalServices")
                         .WithMany()
-                        .HasForeignKey("ClinicStaffId")
+                        .HasForeignKey("MedicalServicesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -163,9 +171,22 @@ namespace CliniqueAngularNetCore.Migrations
 
             modelBuilder.Entity("CliniqueAngularNetCore.Models.ClinicStaff", b =>
                 {
-                    b.HasOne("CliniqueAngularNetCore.Models.MedicalService", "MedicalService")
+                    b.HasOne("CliniqueAngularNetCore.Models.MedicalServices", "MedicalServices")
                         .WithMany("Staffs")
-                        .HasForeignKey("MedicalServiceId");
+                        .HasForeignKey("MedicalServicesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.User", b =>
+                {
+                    b.HasOne("CliniqueAngularNetCore.Models.ClinicStaff", null)
+                        .WithMany("Users")
+                        .HasForeignKey("ClinicStaffId");
+
+                    b.HasOne("CliniqueAngularNetCore.Models.MedicalServices", null)
+                        .WithMany("Users")
+                        .HasForeignKey("MedicalServicesId");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,7 +16,7 @@ namespace CliniqueAngularNetCore.ViewModels
         public int Price { get; set; }
         public List<ClinicStaffForServices> Staffs { get; set; }
 
-        public static MedicalServicesDetails FromMedicalServices(MedicalServices services)
+        public static MedicalServicesDetails FromMedicalServices(MedicalService services)
         {
             return new MedicalServicesDetails
             {

@@ -1,8 +1,13 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+using CliniqueAngularNetCore.Helpers;
+using CliniqueAngularNetCore.Models;
 using CliniqueAngularNetCore.Services;
 using CliniqueAngularNetCore.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace CliniqueAngularNetCore.Controllers
 {
@@ -13,11 +18,15 @@ namespace CliniqueAngularNetCore.Controllers
         public class UsersController : ControllerBase
         {
             private IUserService _userService;
+            private IMapper _mapper;
+            private readonly AppSettings _appSettings;
 
-            public UsersController(IUserService userService)
+        public UsersController(IUserService userService, IMapper mapper, IOptions<AppSettings> appSettings)
             {
                 _userService = userService;
-            }
+                _mapper = mapper;
+                _appSettings = appSettings.Value;
+        }
 
             [AllowAnonymous]
             [HttpPost("authenticate")]
@@ -28,37 +37,72 @@ namespace CliniqueAngularNetCore.Controllers
                 if (response == null)
                     return BadRequest(new { message = "Username or password is incorrect" });
 
-                return Ok(response);
-            }
+            //var userToReturn = _mapper.Map<UserWithToken>(response);
 
-            [HttpGet]
-            public IActionResult GetAll()
+            return Ok(response);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public IActionResult Register([FromBody]UserRegister model)
+        {
+            // map model to entity
+            var user = _mapper.Map<User>(model);
+
+            try
             {
-                var users = _userService.GetAll();
-                return Ok(users);
+                // create user
+                _userService.Register(user);
+                return Ok();
             }
-
-            //[AllowAnonymous]
-            //[HttpPost]
-            //public async Task<IActionResult> PostUser(UserForCreation user)
-            //{
-            //    if (await _userService.UsernameExists(user.Username))
-            //    {
-            //        return BadRequest("Username already taken");
-            //    }
-
-            //    var userToReturn = await _userService.CreateUser(user);
-            //    if (userToReturn == null)
-            //    {
-            //        return BadRequest("Some error occured");
-            //    }
-            //    return Ok(userToReturn);
-            //}
-
-            private long GetUserId()
+            catch (AppException ex)
             {
-                var idClaim = User.Claims.FirstOrDefault(x => x.Type.Equals("id")).Value;
-                return long.Parse(idClaim);
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var users = _userService.GetAll();
+            var model = _mapper.Map<IList<UserDto>>(users);
+            return Ok(model);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(long id)
+        {
+            var user = _userService.GetById(id);
+            var model = _mapper.Map<UserDto>(user);
+            return Ok(model);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, [FromBody]UserUpdate model)
+        {
+            // map model to entity and set id
+            var user = _mapper.Map<User>(model);
+            user.Id = id;
+
+            try
+            {
+                // update user 
+                _userService.Update(user);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            _userService.Delete(id);
+            return Ok();
+        }
+    }
 }
