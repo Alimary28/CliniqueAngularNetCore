@@ -47,8 +47,11 @@ namespace CliniqueAngularNetCore.Controllers
                 Type = s.Type,
                 Description = s.Description
             }).ToListAsync();
-
-            return Ok(medicalServices);
+            var groupedDomainList = medicalServices
+                .GroupBy(m => m.Domain)
+                .Select(grp => grp.ToList())
+                .ToList();
+            return Ok(groupedDomainList);
         }
         // GET: api/MedicalServices/5
         /// <summary>

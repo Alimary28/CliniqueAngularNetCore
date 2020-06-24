@@ -6,26 +6,34 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { MedicalServiceListComponent } from './component/medical-service-list/medical-service-list.component';
+import { MedicalServiceDetailsComponent } from './component/medical-service-details/medical-service-details.component';
+import { AddMedicalServiceComponent } from './component/add-medical-service/add-medical-service.component';
+import { UpdateMedicalServiceComponent } from './component/update-medical-service/update-medical-service.component';
+import { MedicalServiceService } from './services/medical-service.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    HomePageComponent,
+    MedicalServiceListComponent,
+    MedicalServiceDetailsComponent,
+    AddMedicalServiceComponent,
+    UpdateMedicalServiceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomePageComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'medical-service-list', component: MedicalServiceListComponent },
+      { path: 'medical-service-list/:id', component: MedicalServiceDetailsComponent }
     ])
   ],
   providers: [],

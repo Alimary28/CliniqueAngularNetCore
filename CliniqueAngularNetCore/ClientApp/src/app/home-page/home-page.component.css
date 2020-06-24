@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.container {
+    height: 100vh;
+}
+
+#nav-style {
+    visibility: hidden !important;
+}
+
+#landing-header {
+    z-index: 1;
+    text-align: center;
+    padding: 3%;
+    background: none;
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+#landing-header h1 {
+    color: black;
+    font-size: 30px;
+}
+
+.slideshow {
+    background-image: url(https://www.artisansofmedicine.com/wp-content/uploads/2019/06/Why-Do-Family-Doctors-Recommend-Genetic-Testing.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

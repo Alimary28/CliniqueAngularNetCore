@@ -51,6 +51,20 @@
     <Compile Remove="Migrations\20200621102258_AddUniqueKeys.Designer.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\models\medical-service.model.ts" />
+    <None Remove="ClientApp\src\app\models\MedicalServiceDetail.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\src\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\medical-service.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\MedicalServiceDetail.ts" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

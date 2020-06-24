@@ -1,6 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+/*html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.hidescrollbar {
+    overflow: hidden;
+}
+
+.navbar {
+    margin-bottom: 0 !important;
+}*/
+body {
+    font-size: 15px;
+}
 a {
   color: #0366d6;
 }
@@ -14,3 +35,4 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
