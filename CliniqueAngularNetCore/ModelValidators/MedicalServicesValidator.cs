@@ -11,8 +11,6 @@ namespace CliniqueAngularNetCore.ModelValidators
     {
         public MedicalServicesValidator()
         {
-            RuleFor(x => x.Domain)
-                .NotEmpty();
             RuleFor(x => x.Description)
                 .Length(5, 350);
             RuleFor(x => x.Minutes)

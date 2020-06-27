@@ -1,9 +1,9 @@
-<div class="services">
+<div class="container">
     <div class="jumbotron">
         <h2 id="tableLabel">Medical services</h2>
 
         <div class="wmx12 mx-auto grid ai-center row">
-            <form id="search" role="search" action="/medical-services" method="get"
+            <form id="search" role="search" action="/medical-service-list" method="get"
                   class="grid--cell fl-grow1 searchbar px12 js-searchbar " autocomplete="off">
                 <div class="ps-relative">
                     <input (keyup)="doSearch()" name="searchText" type="text" placeholder="Search…" value="" autocomplete="off"

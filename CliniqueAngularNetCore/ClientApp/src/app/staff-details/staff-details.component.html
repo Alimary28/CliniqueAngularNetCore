@@ -1,0 +1,33 @@
+<div *ngIf="currentStaff" class="container" id="details">
+    <div class="jumbotron">
+        <h2>{{ currentStaff.firstName }} {{currentStaff.lastName}}</h2>
+    </div>
+    <div class="container">
+        <div class="card" id="staffDetails">
+            <h4><b>Details:</b></h4>
+            <h5><b>Position: </b>{{currentStaff.position}}</h5>
+            <h5><b>Age:</b>{{ currentStaff.age }}</h5>
+            <h5><b>Date of employment: </b>{{ currentStaff.employmentDate }}</h5>
+            <h5><b>Salary: </b>{{ currentStaff.salary }}</h5>
+        </div>
+    </div>
+    <div class="row" id="staff-details-btn">
+
+        <div class="col-sm-6" id="crud-staff-btn">
+            <button class="btn btn-outline-danger btn-lg" type="button"
+                    (click)="deleteStaff()">
+                Delete clinic staff
+            </button>
+
+            <button class="btn btn-outline-warning btn-lg" type="button"
+                    (click)="updateStaff()">
+                Update clinic staff
+            </button>
+        </div>
+    </div>
+    <div *ngIf="isOpen">
+        <app-update-staff [selectedStaff]="currentStaff" [submitLabel]="label" (onSubmit)="reloadData()">
+        </app-update-staff>
+    </div>
+    <div><hr /> <button id="backBtn" class="btn btn-primary" type="button" (click)="goBack()"><i class="fa fa-arrow-left"></i></button></div>
+</div>

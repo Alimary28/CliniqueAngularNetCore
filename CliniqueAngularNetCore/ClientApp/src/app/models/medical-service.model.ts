@@ -1,15 +1,9 @@
-export enum Domain {
-    Orthopedics = 0,
-    Cardiology = 1,
-    Physiokinetotherapy = 2,
-    Surgery = 3
-}
-export interface MedicalService {
+export class MedicalService {
     id: number;
-    domain: Domain;
-    type: string,
+    domain: string;
+    name: string;
     description: string;
     minutes: number;
     price: number;
-    staffs?: string[];
+    staffs: [];
 }

@@ -1,12 +1,10 @@
-import { Domain } from "./medical-service.model";
-
 
 export class MedicalServiceDetail {
     id: number;
-    domain: Domain;
-    type: string;
+    domain: string;
+    name: string;
     description: string;
     minutes: number;
     price: number;
-    staffs?: any[]; 
+    staffs: []; 
 }

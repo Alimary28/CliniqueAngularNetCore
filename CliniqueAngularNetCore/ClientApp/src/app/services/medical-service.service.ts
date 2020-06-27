@@ -24,7 +24,7 @@ export class MedicalServiceService {
     }
 
     updateMedicalService(id: number, medicalService: MedicalService) {
-        return this.http.put<MedicalService>(this.backendUrl + `/${id}`, medicalService);
+        return this.http.put<MedicalService>(this.backendUrl + '/' + `${id}`, medicalService);
     }
 
     deleteMedicalService(id: number){

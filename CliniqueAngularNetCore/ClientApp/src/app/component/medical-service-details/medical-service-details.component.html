@@ -1,19 +1,79 @@
-<div *ngIf="currentMedicalService" class="container" id="details">
-    <div class="jumbotron">
-        <h1>{{ currentMedicalService.type }}</h1>
-    </div>
-    <div class="container">
-        <div class="card">
-            <h4><b>Details:</b></h4>
-            <h5>Domain</h5>
-            <h5><b>Description: </b>{{ currentMedicalService.description }}</h5>
-            <h5><b>Minutes: </b>{{ currentMedicalService.minutes }}</h5>
-            <h5><b>Price: </b>{{ currentMedicalService.price }}</h5>
-            <h5><b>Doctors: </b>{{ currentMedicalService.staffs }}</h5>
-            <div *ngFor="let staff of currentMedicalService.staffs">
-                <p>{{staff.position}}-{{staff.firstName}} {{staff.lastName}}<p>
+
+    <div *ngIf="currentMedicalService" class="container" id="details">
+        <div class="jumbotron">
+            <h1>{{ currentMedicalService.name }}</h1>
+        </div>
+        <div class="container">
+            <div class="card" id="medicalServiceDetails">
+                <h4><b>Details:</b></h4>
+                <h5><b>Domain: </b>{{currentMedicalService.domain}}</h5>
+                <h5><b>Description: </b>{{ currentMedicalService.description }}</h5>
+                <h5><b>Minutes: </b>{{ currentMedicalService.minutes }}</h5>
+                <h5><b>Price: </b>{{ currentMedicalService.price }}</h5>
+                <h5><b>Doctors: </b> </h5>
+                <!--<div *ngFor="let staff of currentMedicalService.staffs">
+                    <p>{{staff.position}}: {{staff.firstName}} {{staff.lastName}}</p>
+                </div>-->
             </div>
+        </div>
+        <div class="row" id="medicalService-details-btn">
+
+            <div class="col-sm-6" id="crud-medicalService-btn">
+                <button class="btn btn-outline-danger btn-lg" type="button"
+                        (click)="deleteMedicalService()">
+                    Delete medical service
+                </button>
+
+                <button class="btn btn-outline-warning btn-lg" type="button"
+                        (click)="updateMedicalService()">
+                    Update medical service
+                </button>
+                <button class="btn btn-outline-success btn-lg" type="button"
+                        (click)="staffFormToggle()">
+                    Add a doctor
+                </button>
+            </div>
+        </div>
+        <div *ngIf="isOpen">
+            <app-update-medical-service [selectedMedicalService]="currentMedicalService" [submitLabel]="label" (onSubmit)="reloadData()">
+            </app-update-medical-service>
+        </div>
+
+        <h4 *ngIf="currentMedicalService.staffs.length > 0">Clinic staff:</h4>
+        <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="currentMedicalService.staffs.length > 0">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let staff of currentMedicalService.staffs">
+                    <td>{{ staff.position }}</td>
+                    <td>{{ staff.firstName }}</td>
+                    <td>{{ staff.lastName }}</td>
+                    <td>
+                        <a class="btn btn-outline-primary btn-sm mr-3"
+                           (click)="updateStaff(staff)">Update</a>
+                        <a class="btn btn-outline-danger btn-sm"
+                           (click)="deleteStaff(staff.staffId)" (onSubmit)="reloadData()">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="addStaffMode">
+            <app-add-staff [currentMedicalService]="currentMedicalService" (onSubmit)="addStaffPassChild()"
+                             (onClose)="closeFormAtCancel()">
+            </app-add-staff>
+        </div>
+        <div *ngIf="updateStaffMode">
+            <app-update-staff [currentMedicalService]="currentMedicalService" [staff]="staffs"
+                                 (onSubmit)="reloadData()" (onClose)="closeUpdateFormAtCancel()">
+            </app-update-staff>
+            <hr />
         </div>
         <div><hr /> <button id="backBtn" class="btn btn-primary" type="button" (click)="goBack()"><i class="fa fa-arrow-left"></i></button></div>
     </div>
-</div>
+

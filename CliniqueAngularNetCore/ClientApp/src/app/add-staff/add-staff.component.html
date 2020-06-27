@@ -1,0 +1,10 @@
+<div class="container" id="add-medical-service-style">
+    <div class="col-sm-10 offset-sm-1 jumbotron"><h1>Medical service information</h1></div>
+    <div class="col-sm-10 offset-sm-1 ">
+        <app-update-staff [selectedStaff]="clinicStaff"
+                                    [submitLabel]="label"
+                                    (onSubmit)="reloadData($event)">
+        </app-update-staff>
+    </div>
+
+</div>

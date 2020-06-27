@@ -28,9 +28,11 @@ namespace CliniqueAngularNetCore.Controllers
             IQueryable<ClinicStaff> staffs = _context.Staffs;
             var staffsList = await staffs.Select(s => new ClinicStaffForServices 
             {
+                Id = s.Id,
                 FirstName = s.FirstName,
                 LastName = s.LastName,
-                Position = s.Position
+                Position = s.Position,
+                MedicalServiceId = s.MedicalServiceId
             }).ToListAsync();
             return staffsList;
         }
@@ -84,14 +86,14 @@ namespace CliniqueAngularNetCore.Controllers
         // POST: api/ClinicStaffs
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<ClinicStaff>> PostClinicStaff(ClinicStaff clinicStaff)
-        {
-            _context.Staffs.Add(clinicStaff);
-            await _context.SaveChangesAsync();
+        //[HttpPost]
+        //public async Task<ActionResult<ClinicStaff>> PostClinicStaff(ClinicStaff clinicStaff)
+        //{
+        //    _context.Staffs.Add(clinicStaff);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetClinicStaff), new { id = clinicStaff.Id }, clinicStaff);
-        }
+        //    return CreatedAtAction(nameof(GetClinicStaff), new { id = clinicStaff.Id }, clinicStaff);
+        //}
 
         // DELETE: api/ClinicStaffs/5
         [HttpDelete("{id}")]

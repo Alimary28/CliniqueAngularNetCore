@@ -1,0 +1,44 @@
+<p>Update clinic staff:</p>
+<form [formGroup]="form">
+
+    <div class="form-group">
+        <label>Firstname</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName">
+        <span *ngIf="errorMessage.FirstName" class="text-danger"><small>{{errorMessage.FirstName}}</small> </span>
+    </div>
+    <div class="form-group">
+        <label>Lastname</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+        <span *ngIf="errorMessage.LastName" class="text-danger"><small>{{errorMessage.LastName}}</small> </span>
+    </div>
+    <div class="form-group">
+        <label>Age</label>
+        <input type="number" class="form-control" id="age" name="age" formControlName="age">
+        <span *ngIf="errorMessage.Age" class="text-danger"><small>{{errorMessage.Age}}</small> </span>
+    </div>
+    <div class="form-group">
+        <label>Position</label>
+        <select name="position" formControlName="position" class="form-control">
+            <option value="Doctor">Doctor</option>
+            <option value="Nurse">Nurse</option>
+            <option value="Therapist">Therapist</option>
+            <option value="Physician">Physician</option>
+            <option value="Receptionist">Receptionist</option>
+            <option value="Manager">Manager</option>
+            <option value="Surgeon">Surgeon</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Employment date</label>
+        <input type="text" class="form-control" id="employmentDate" name="employmentDate" formControlName="employmentDate">
+        <span *ngIf="errorMessage.EmploymentDate" class="text-danger"><small>{{errorMessage.EmploymentDate}}</small> </span>
+    </div>
+
+    <div class="form-group">
+        <label>Salary</label>
+        <input type="number" class="form-control" id="salary" name="salary" formControlName="salary">
+    </div>
+    <button type="submit" class="btn btn-success" (click)="submitData()">{{ submitLabel }}</button>
+    <button class="btn btn-secondary" type="button" routerLink="/staff-list">Cancel</button>
+</form>

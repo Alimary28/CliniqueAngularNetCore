@@ -1,0 +1,21 @@
+input {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: #c7bbbbc9;
+}
+
+@media screen and (min-width: 768px) {
+    #add-medical-service-style .jumbotron {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+        margin-right: -15px !important;
+    }
+}

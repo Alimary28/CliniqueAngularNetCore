@@ -1,9 +1,10 @@
-<!--<header>
+
+<header>
     <nav id="nav-style"
          class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
             <a class="navbar-brand" [routerLink]="['/']">
-                <i class="fa fa-rocket" aria-hidden="true"></i>
+                <i class="fa fa-medkit" aria-hidden="true"></i>
                 Medical Clinic
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
@@ -12,40 +13,40 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
                 <ul class="navbar-nav flex-grow">
-                    <li *ngIf="loggedIn()" class="nav-item mr-3">
-                        <a *appHasRole="['Admin']" class="nav-link text-dark" [routerLink]="['/clinic-staff/new']">
+
+                    <li class="nav-item mr-3">
+                        <a class="nav-link text-dark" [routerLink]="['/add-medical-service']">
                             <i class="fa fa-plus" aria-hidden="true"></i>
-                            Add an employee
-                        </a>
-                    </li>
-                    <li *ngIf="loggedIn()" class="nav-item mr-3">
-                        <a *appHasRole="['Admin','Moderator']" class="nav-link text-dark" [routerLink]="['/medical-service/new']">
-                            <i class="fa fa-commenting-o" aria-hidden="true"></i>
                             Add a medical service
                         </a>
                     </li>
                     <li class="nav-item mr-3" [routerLinkActive]="['link-active']">
                         <a class="nav-link text-dark" [routerLink]="['/medical-service-list']">
-                            <i class="fa fa-film" aria-hidden="true"></i>
+                            <i class="fa fa-medkit" aria-hidden="true"></i>
                             Medical services
                         </a>
                     </li>
-
-                    <li *ngIf="loggedIn()" class="nav-item mr-3" [routerLinkActive]="['link-active']">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link text-dark" [routerLink]="['/staff-list']">
+                            <i class="fa fa-user-md" aria-hidden="true"></i>
+                            Clinic staff
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3" [routerLinkActive]="['link-active']">
                         <a class="nav-link text-dark" [routerLink]="['/appointments']">
-                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
                             Make an appointment
                         </a>
                     </li>
 
-                    <li *ngIf="!loggedIn()" class="nav-item" [routerLinkActive]="['link-active']">
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
                         <a class="nav-link text-dark" [routerLink]="['/login']">
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                             Login
                         </a>
                     </li>
                     <li>
-                        <div *ngIf="loggedIn()" class="dropdown mt-4" dropdown>
+                        <div class="dropdown mt-4" dropdown>
                             <a class="dropdown-toggle text-dark" dropdownToggle>
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                 Welcome {{loggedInUser | titlecase}}
@@ -65,5 +66,5 @@
             </div>
         </div>
     </nav>
-</header>-->
+</header>
 

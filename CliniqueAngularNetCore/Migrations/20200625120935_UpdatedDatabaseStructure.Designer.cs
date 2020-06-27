@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CliniqueAngularNetCore.Migrations
 {
     [DbContext(typeof(CliniqueDbContext))]
-    [Migration("20200618140435_AddUserAndLinksWithOtherEntities")]
-    partial class AddUserAndLinksWithOtherEntities
+    [Migration("20200625120935_UpdatedDatabaseStructure")]
+    partial class UpdatedDatabaseStructure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,35 @@ namespace CliniqueAngularNetCore.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.Appointment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AppointmentTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ClinicStaffId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("ClinicStaffId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("Appointments");
+                });
 
             modelBuilder.Entity("CliniqueAngularNetCore.Models.ClinicStaff", b =>
                 {
@@ -40,7 +69,7 @@ namespace CliniqueAngularNetCore.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("MedicalServicesId")
+                    b.Property<long>("MedicalServiceId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Position")
@@ -51,12 +80,12 @@ namespace CliniqueAngularNetCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MedicalServicesId");
+                    b.HasIndex("MedicalServiceId");
 
                     b.ToTable("Staffs");
                 });
 
-            modelBuilder.Entity("CliniqueAngularNetCore.Models.MedicalServices", b =>
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.MedicalService", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,11 +101,11 @@ namespace CliniqueAngularNetCore.Migrations
                     b.Property<int>("Minutes")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -90,9 +119,6 @@ namespace CliniqueAngularNetCore.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("ClinicStaffId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -101,9 +127,6 @@ namespace CliniqueAngularNetCore.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("MedicalServicesId")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
@@ -119,31 +142,31 @@ namespace CliniqueAngularNetCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClinicStaffId");
-
-                    b.HasIndex("MedicalServicesId");
-
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CliniqueAngularNetCore.Models.ClinicStaff", b =>
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.Appointment", b =>
                 {
-                    b.HasOne("CliniqueAngularNetCore.Models.MedicalServices", "MedicalServices")
-                        .WithMany("Staffs")
-                        .HasForeignKey("MedicalServicesId")
+                    b.HasOne("CliniqueAngularNetCore.Models.ClinicStaff", "ClinicStaff")
+                        .WithMany()
+                        .HasForeignKey("ClinicStaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CliniqueAngularNetCore.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CliniqueAngularNetCore.Models.User", b =>
+            modelBuilder.Entity("CliniqueAngularNetCore.Models.ClinicStaff", b =>
                 {
-                    b.HasOne("CliniqueAngularNetCore.Models.ClinicStaff", null)
-                        .WithMany("Users")
-                        .HasForeignKey("ClinicStaffId");
-
-                    b.HasOne("CliniqueAngularNetCore.Models.MedicalServices", null)
-                        .WithMany("Users")
-                        .HasForeignKey("MedicalServicesId");
+                    b.HasOne("CliniqueAngularNetCore.Models.MedicalService", "MedicalService")
+                        .WithMany("Staffs")
+                        .HasForeignKey("MedicalServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

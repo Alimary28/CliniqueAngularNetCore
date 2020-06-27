@@ -1,9 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Provide sufficient contrast against white background */
-
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
-/*html, body {
+html, body {
     height: 100%;
 }
 
@@ -18,8 +14,11 @@ body {
 
 .navbar {
     margin-bottom: 0 !important;
-}*/
-body {
+}
+body, h3 {
+    font-size: 18px;
+}
+p, a {
     font-size: 15px;
 }
 a {
@@ -36,3 +35,12 @@ code {
   border-color: #1861ac;
 }
 
+/*.medical-list-background {
+    background: url(https://doctorokz.com/wp-content/uploads/2018/02/bg1.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-width: 1024px;
+    width: 100%;
+}*/

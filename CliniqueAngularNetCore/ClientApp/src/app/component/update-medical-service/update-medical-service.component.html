@@ -1,1 +1,41 @@
-<p>update-medical-service works!</p>
+<p>Update medical service:</p>
+<form [formGroup]="form">
+    <div class="form-group">
+        <label>Domain</label>
+        <select name="domain" formControlName="domain" class="form-control">
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Physiokinetotherapy">Physiokinetotherapy</option>
+            <option value="Surgery">Surgery</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" id="name" name="name" formControlName="name">
+        <span *ngIf="errorMessage.Name" class="text-danger"><small>{{errorMessage.Name}}</small> </span>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <textarea name="description"
+                  class="form-control"
+                  formControlName="description"
+                  required>
+    </textarea>
+        <span *ngIf="errorMessage.Description" class="text-danger"><small>{{errorMessage.Description}}</small> </span>
+    </div>
+
+    <div class="form-group">
+        <label>Minutes</label>
+        <input type="number" class="form-control" id="minutes" name="minutes" formControlName="minutes">
+        <span *ngIf="errorMessage.Minutes" class="text-danger"><small>{{errorMessage.Minutes}}</small> </span>
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" id="price" name="price" formControlName="price">
+    </div>
+    <button type="submit" class="btn btn-success" (click)="submitData()">{{ submitLabel }}</button>
+    <button class="btn btn-secondary" type="button" routerLink="/medical-service-list">Cancel</button>
+</form>

@@ -67,10 +67,7 @@ namespace CliniqueAngularNetCore.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("MedicalServiceId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("MedicalServicesId")
+                    b.Property<long>("MedicalServiceId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Position")
@@ -102,11 +99,11 @@ namespace CliniqueAngularNetCore.Migrations
                     b.Property<int>("Minutes")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -165,7 +162,9 @@ namespace CliniqueAngularNetCore.Migrations
                 {
                     b.HasOne("CliniqueAngularNetCore.Models.MedicalService", "MedicalService")
                         .WithMany("Staffs")
-                        .HasForeignKey("MedicalServiceId");
+                        .HasForeignKey("MedicalServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

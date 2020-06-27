@@ -80,10 +80,10 @@ namespace CliniqueAngularNetCore
             services
                 .AddControllers()
                 .AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                options.JsonSerializerOptions.IgnoreNullValues = true;
-            })
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                })
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
             
             services.AddDbContext<CliniqueDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CliniqueDbConnectionString")));

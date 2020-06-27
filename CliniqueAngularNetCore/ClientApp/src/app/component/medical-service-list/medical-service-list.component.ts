@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MedicalService, Domain } from '../../models/medical-service.model';
+import { MedicalService} from '../../models/medical-service.model';
 import { MedicalServiceService } from '../../services/medical-service.service';
 
 

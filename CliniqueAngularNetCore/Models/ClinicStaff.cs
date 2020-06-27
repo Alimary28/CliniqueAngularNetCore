@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CliniqueAngularNetCore.Models
 {
@@ -24,8 +21,9 @@ namespace CliniqueAngularNetCore.Models
         public DateTime EmploymentDate { get; set; }
         public int Salary { get; set; }
         public MedicalService MedicalService { get; set; }
-        public long MedicalServicesId { get; set; }
+        public long MedicalServiceId { get; set; }
 
     }
 }
+
 

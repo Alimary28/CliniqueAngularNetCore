@@ -37,7 +37,7 @@ namespace CliniqueAngularNetCore.Models
                     new MedicalService
                     {
                        Domain = Domain.Orthopedics,
-                       Type  = "Treatment",
+                       Name  = "Treatment",
                        Description = "Treatment of osteoarthritis",
                        Minutes = 30,
                        Price = 150
@@ -46,7 +46,7 @@ namespace CliniqueAngularNetCore.Models
                      new MedicalService
                      {
                          Domain = Domain.Orthopedics,
-                         Type = "Treatment",
+                         Name = "Treatment",
                          Description = "Treatment of ligament injuries",
                          Minutes = 80,
                          Price = 465
@@ -55,7 +55,7 @@ namespace CliniqueAngularNetCore.Models
                      new MedicalService
                      {
                          Domain=Domain.Cardiology,
-                         Type = "Consultation",
+                         Name = "Consultation",
                          Description = "The electrocardiogram is performed when there is suspected a cardiovascular disease",
                          Minutes = 45,
                          Price = 380
@@ -63,7 +63,7 @@ namespace CliniqueAngularNetCore.Models
                      new MedicalService
                      {
                          Domain = Domain.Physiokinetotherapy,
-                         Type = "Consultation",
+                         Name = "Consultation",
                          Description = "Therapeutic massage for the amelioration of a large number of diseases",
                          Minutes = 50,
                          Price = 180

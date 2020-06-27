@@ -24,15 +24,15 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.6.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,17 +43,29 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200616184156_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200616184156_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200617134901_AddClinicStaffToMedicalServices.cs" />
+    <Compile Remove="Migrations\20200617134901_AddClinicStaffToMedicalServices.Designer.cs" />
+    <Compile Remove="Migrations\20200618140435_AddUserAndLinksWithOtherEntities.cs" />
+    <Compile Remove="Migrations\20200618140435_AddUserAndLinksWithOtherEntities.Designer.cs" />
+    <Compile Remove="Migrations\20200621063921_AddAppointment.cs" />
+    <Compile Remove="Migrations\20200621063921_AddAppointment.Designer.cs" />
     <Compile Remove="Migrations\20200621075032_AddAppointmentAndLinksWithOthers.cs" />
     <Compile Remove="Migrations\20200621075032_AddAppointmentAndLinksWithOthers.Designer.cs" />
     <Compile Remove="Migrations\20200621081426_AppointmentUniqueIdPairs.cs" />
     <Compile Remove="Migrations\20200621081426_AppointmentUniqueIdPairs.Designer.cs" />
     <Compile Remove="Migrations\20200621102258_AddUniqueKeys.cs" />
     <Compile Remove="Migrations\20200621102258_AddUniqueKeys.Designer.cs" />
+    <Compile Remove="Migrations\20200621105746_AddAppointmentAndLinksWithUserAndClinicStaff.cs" />
+    <Compile Remove="Migrations\20200621105746_AddAppointmentAndLinksWithUserAndClinicStaff.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\ClinicStaffDetail.ts" />
     <None Remove="ClientApp\src\app\models\medical-service.model.ts" />
     <None Remove="ClientApp\src\app\models\MedicalServiceDetail.ts" />
+    <None Remove="ClientApp\src\app\models\StaffForMedicalService.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,8 +73,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\ClinicStaffDetail.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\medical-service.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\MedicalServiceDetail.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\StaffForMedicalService.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CliniqueAngularNetCore.Models;
 using CliniqueAngularNetCore.ViewModels;
+using AutoMapper;
 
 namespace CliniqueAngularNetCore.Controllers
 {
@@ -15,36 +16,37 @@ namespace CliniqueAngularNetCore.Controllers
     public class MedicalServicesController : ControllerBase
     {
         private readonly CliniqueDbContext _context;
-
-        public MedicalServicesController(CliniqueDbContext context)
+        private readonly IMapper _mapper;
+        public MedicalServicesController(CliniqueDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         /// <summary>
         /// Gets a list of the medical services
         /// </summary>
-        /// <param name="searchString">Filter services by description or type</param>
+        /// <param name="searchText">Filter services by description or type</param>
         /// <returns>A list of medical services</returns>
         /// <response code="200">Returns 200 if the request was succesfully completed</response>
         
         //GET: api/MedicalServices
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<MedicalServiceDto>>> GetMedicalServices(string searchString=null)
+        public async Task<ActionResult<IEnumerable<MedicalServiceDto>>> GetMedicalServices(string searchText=null)
         {
             var result = _context.MedicalServices as IQueryable<MedicalService>;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (searchText != null)
             {
-                result = result.Where(s => s.Type.ToLower().Contains(searchString) || 
-                                           s.Description.ToLower().Contains(searchString));
+                result = result.Where(s => s.Name.ToLower().Contains(searchText) || 
+                                           s.Description.ToLower().Contains(searchText));
             }
             var medicalServices = await result.Select(s => new MedicalServiceDto
             {
                 Id = s.Id,
                 Domain = s.Domain,
-                Type = s.Type,
+                Name = s.Name,
                 Description = s.Description
             }).ToListAsync();
             var groupedDomainList = medicalServices
@@ -64,25 +66,27 @@ namespace CliniqueAngularNetCore.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<MedicalServicesDetails>> GetMedicalServices(long id)
+        public async Task<ActionResult<MedicalServiceDetails>> GetMedicalServices(long id)
         {
             var medicalServices = await _context
-                .MedicalServices
-                .Include(s => s.Staffs)
-                .FirstOrDefaultAsync(s => s.Id == id);
-
+                    .MedicalServices
+                    .Include(ms => ms.Staffs)
+                    .FirstOrDefaultAsync(ms => ms.Id == id);
+                    
             if (medicalServices == null)
             {
                 return NotFound();
             }
+            var medicalServiceToReturn = _mapper.Map<MedicalServiceDetails>(medicalServices);
+           
 
-            return MedicalServicesDetails.FromMedicalServices(medicalServices);
+            return medicalServiceToReturn;
            
         }
 
         // PUT: api/MedicalServices/5
         /// <summary>
-        /// Updates a MedicalSErvice object based on its id
+        /// Updates a MedicalService object based on its id
         /// </summary>
         /// <param name="id">Search the service with the given id</param>
         /// <param name="medicalServices">The medical service object containing all its properties</param>
@@ -141,6 +145,20 @@ namespace CliniqueAngularNetCore.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetMedicalServices), new { id = medicalServices.Id }, medicalServices);
+        }
+
+        //Post: api/MedicalServices/5/ClinicStaffs
+        [HttpPost("{medicalServiceId}/clinicStaff")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult<ClinicStaff>> PostClinicStaff(long id, ClinicStaff staff) {
+            var medicalService = await _context.MedicalServices.FindAsync(id);
+            staff.MedicalServiceId = medicalService.Id;
+            _context.Staffs.Add(staff);
+            await _context.SaveChangesAsync();
+            medicalService.Staffs.Add(staff);
+            await _context.SaveChangesAsync();
+            return Ok();
+
         }
 
         // DELETE: api/MedicalServices/5
