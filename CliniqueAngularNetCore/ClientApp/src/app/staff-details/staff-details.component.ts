@@ -11,8 +11,8 @@ import { ClinicStaffService } from '../services/clinic-staff.service';
 export class StaffDetailsComponent implements OnInit {
     public isOpen = false;
     public label = 'Update';
-    private staffId: number;
-    private currentStaff: ClinicStaff;
+    public staffId: number;
+    public currentStaff: ClinicStaff;
     constructor(
         private route: ActivatedRoute,
         private router: Router,

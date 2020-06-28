@@ -9,6 +9,7 @@ import { ClinicStaff } from '../models/ClinicStaffDetail';
 export class ClinicStaffService {
 
     private backendUrl = '/api/ClinicStaffs';
+    private medicalServicerUrl = '/api/MedicalServices';
 
     constructor(private http: HttpClient) { }
 
@@ -20,8 +21,8 @@ export class ClinicStaffService {
         return this.http.get<ClinicStaff>(this.backendUrl + '/' + `${id}`);
     }
 
-    addClinicStaff(staff: ClinicStaff) {
-        return this.http.post<ClinicStaff>(this.backendUrl, staff);
+    addClinicStaff(medicalServiceId: number, staff: ClinicStaff) {
+        return this.http.post<ClinicStaff>(this.medicalServicerUrl + '/' + `${medicalServiceId}` + '/ClinicStaffs', staff);
     }
 
     updateClinicStaff(id: number, staff: ClinicStaff) {

@@ -1,10 +1,38 @@
-<div class="container" id="add-medical-service-style">
-    <div class="col-sm-10 offset-sm-1 jumbotron"><h1>Medical service information</h1></div>
-    <div class="col-sm-10 offset-sm-1 ">
-        <app-update-staff [selectedStaff]="clinicStaff"
-                                    [submitLabel]="label"
-                                    (onSubmit)="reloadData($event)">
-        </app-update-staff>
-    </div>
+<form [formGroup]="staffForm" (ngSubmit)="save()">
+        <div class="form-group">
+            <label for="firstName">Firstname</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName">
+        </div>
+        <div class="form-group">
+            <label>Lastname</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" class="form-control" id="age" name="age" formControlName="age">
+        </div>
+        <div class="form-group">
+            <label>Position</label>
+            <select name="position" formControlName="position" class="form-control">
+                <option value="Doctor">Doctor</option>
+                <option value="Nurse">Nurse</option>
+                <option value="Therapist">Therapist</option>
+                <option value="Physician">Physician</option>
+                <option value="Receptionist">Receptionist</option>
+                <option value="Manager">Manager</option>
+                <option value="Surgeon">Surgeon</option>
+            </select>
+        </div>
 
-</div>
+        <div class="form-group">
+            <label>Employment date</label>
+            <input type="text" class="form-control" id="employmentDate" name="employmentDate" formControlName="employmentDate">
+        </div>
+
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="number" class="form-control" id="salary" name="salary" formControlName="salary">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button class="btn btn-secondary" type="button" routerLink="/staff-list">Cancel</button>
+    </form>

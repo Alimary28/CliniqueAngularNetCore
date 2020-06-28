@@ -49,10 +49,12 @@ namespace CliniqueAngularNetCore.Controllers
                 Name = s.Name,
                 Description = s.Description
             }).ToListAsync();
+
             var groupedDomainList = medicalServices
                 .GroupBy(m => m.Domain)
                 .Select(grp => grp.ToList())
                 .ToList();
+
             return Ok(groupedDomainList);
         }
         // GET: api/MedicalServices/5
@@ -148,7 +150,14 @@ namespace CliniqueAngularNetCore.Controllers
         }
 
         //Post: api/MedicalServices/5/ClinicStaffs
-        [HttpPost("{medicalServiceId}/clinicStaff")]
+        /// <summary>
+        /// Adds a clinic staff to a medical service
+        /// </summary>
+        /// <param name="id">The id of the medical service</param>
+        /// <param name="staff">The Clinic staff object with all its properties</param>
+        /// <returns>The created Clinis staff object</returns>
+        /// <response code="201">Returns the newly created item</response>
+        [HttpPost("{id}/ClinicStaffs")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<ClinicStaff>> PostClinicStaff(long id, ClinicStaff staff) {
             var medicalService = await _context.MedicalServices.FindAsync(id);

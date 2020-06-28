@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" id=\"add-medical-service-style\">\r\n    <div class=\"col-sm-10 offset-sm-1 jumbotron\"><h1>Medical service information</h1></div>\r\n    <div class=\"col-sm-10 offset-sm-1 \">\r\n        <app-update-staff [selectedStaff]=\"clinicStaff\"\r\n                                    [submitLabel]=\"label\"\r\n                                    (onSubmit)=\"reloadData($event)\">\r\n        </app-update-staff>\r\n    </div>\r\n\r\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"staffForm\" (ngSubmit)=\"save()\">\r\n        <div class=\"form-group\">\r\n            <label for=\"firstName\">Firstname</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" formControlName=\"firstName\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label>Lastname</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" formControlName=\"lastName\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label>Age</label>\r\n            <input type=\"number\" class=\"form-control\" id=\"age\" name=\"age\" formControlName=\"age\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label>Position</label>\r\n            <select name=\"position\" formControlName=\"position\" class=\"form-control\">\r\n                <option value=\"Doctor\">Doctor</option>\r\n                <option value=\"Nurse\">Nurse</option>\r\n                <option value=\"Therapist\">Therapist</option>\r\n                <option value=\"Physician\">Physician</option>\r\n                <option value=\"Receptionist\">Receptionist</option>\r\n                <option value=\"Manager\">Manager</option>\r\n                <option value=\"Surgeon\">Surgeon</option>\r\n            </select>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label>Employment date</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"employmentDate\" name=\"employmentDate\" formControlName=\"employmentDate\">\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label>Salary</label>\r\n            <input type=\"number\" class=\"form-control\" id=\"salary\" name=\"salary\" formControlName=\"salary\">\r\n        </div>\r\n        <button type=\"submit\" class=\"btn btn-success\">Save</button>\r\n        <button class=\"btn btn-secondary\" type=\"button\" routerLink=\"/staff-list\">Cancel</button>\r\n    </form>\r\n");
 
 /***/ }),
 
@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n<div class=\"container\" id=\"add-medical-service-style\">\r\n    <div class=\"col-sm-10 offset-sm-1 jumbotron\"><h1>Medical service information</h1></div>\r\n    <div class=\"col-sm-10 offset-sm-1 \">\r\n        <app-update-medical-service [selectedMedicalService]=\"medicalService\"\r\n                          [submitLabel]=\"label\"\r\n                          (onSubmit)=\"reloadData($event)\">\r\n        </app-update-medical-service>\r\n    </div>\r\n\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" id=\"add-medical-service-style\">\r\n    <div class=\"col-sm-10 offset-sm-1 jumbotron\"><h1>Medical service information</h1></div>\r\n    <div class=\"col-sm-10 offset-sm-1 \">\r\n        <app-update-medical-service [selectedMedicalService]=\"medicalService\"\r\n                          [submitLabel]=\"label\"\r\n                          (onSubmit)=\"reloadData($event)\">\r\n        </app-update-medical-service>\r\n    </div>\r\n\r\n</div>\r\n");
 
 /***/ }),
 
@@ -126,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"currentStaff\" class=\"container\" id=\"details\">\r\n    <div class=\"jumbotron\">\r\n        <h2>{{ currentStaff.firstName }} {{currentStaff.lastName}}</h2>\r\n    </div>\r\n    <div class=\"container\">\r\n        <div class=\"card\" id=\"staffDetails\">\r\n            <h4><b>Details:</b></h4>\r\n            <h5><b>Position: </b>{{currentStaff.position}}</h5>\r\n            <h5><b>Age:</b>{{ currentStaff.age }}</h5>\r\n            <h5><b>Date of employment: </b>{{ currentStaff.employmentDate }}</h5>\r\n            <h5><b>Salary: </b>{{ currentStaff.salary }}</h5>\r\n        </div>\r\n    </div>\r\n    <div class=\"row\" id=\"staff-details-btn\">\r\n\r\n        <div class=\"col-sm-6\" id=\"crud-staff-btn\">\r\n            <button class=\"btn btn-outline-danger btn-lg\" type=\"button\"\r\n                    (click)=\"deleteStaff()\">\r\n                Delete clinic staff\r\n            </button>\r\n\r\n            <button class=\"btn btn-outline-warning btn-lg\" type=\"button\"\r\n                    (click)=\"updateStaff()\">\r\n                Update clinic staff\r\n            </button>\r\n        </div>\r\n    </div>\r\n    <div *ngIf=\"isOpen\">\r\n        <app-update-staff [selectedStaff]=\"currentStaff\" [submitLabel]=\"label\" (onSubmit)=\"reloadData()\">\r\n        </app-update-staff>\r\n    </div>\r\n    <div><hr /> <button id=\"backBtn\" class=\"btn btn-primary\" type=\"button\" (click)=\"goBack()\"><i class=\"fa fa-arrow-left\"></i></button></div>\r\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"currentStaff\" class=\"container\" id=\"details\">\r\n    <div class=\"jumbotron\">\r\n        <h2>{{ currentStaff.firstName }} {{currentStaff.lastName}}</h2>\r\n    </div>\r\n    <div class=\"container\">\r\n        <div class=\"card\" id=\"staffDetails\">\r\n            <h4><b>Details:</b></h4>\r\n            <h5><b>Position: </b>{{currentStaff.position}}</h5>\r\n            <h5><b>Age:</b>{{ currentStaff.age }}</h5>\r\n            <h5><b>Date of employment: </b>{{ currentStaff.employmentDate }}</h5>\r\n            <h5><b>Salary: </b>{{ currentStaff.salary }}</h5>\r\n        </div>\r\n    </div>\r\n    <!--<div class=\"row\" id=\"staff-details-btn\">\r\n\r\n        <div class=\"col-sm-6\" id=\"crud-staff-btn\">\r\n            <button class=\"btn btn-outline-danger btn-lg\" type=\"button\"\r\n                    (click)=\"deleteStaff()\">\r\n                Delete clinic staff\r\n            </button>\r\n\r\n            <button class=\"btn btn-outline-warning btn-lg\" type=\"button\"\r\n                    (click)=\"updateStaff()\">\r\n                Update clinic staff\r\n            </button>\r\n        </div>\r\n    </div>\r\n    <div *ngIf=\"isOpen\">\r\n        <app-update-staff [selectedStaff]=\"currentStaff\" [submitLabel]=\"label\" (onSubmit)=\"reloadData()\">\r\n        </app-update-staff>\r\n    </div>-->\r\n    <div><hr /> <button id=\"backBtn\" class=\"btn btn-primary\" type=\"button\" (click)=\"goBack()\"><i class=\"fa fa-arrow-left\"></i></button></div>\r\n</div>\n");
 
 /***/ }),
 
@@ -152,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>Update clinic staff:</p>\r\n<form [formGroup]=\"form\">\r\n\r\n    <div class=\"form-group\">\r\n        <label>Firstname</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" formControlName=\"firstName\">\r\n        <span *ngIf=\"errorMessage.FirstName\" class=\"text-danger\"><small>{{errorMessage.FirstName}}</small> </span>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Lastname</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" formControlName=\"lastName\">\r\n        <span *ngIf=\"errorMessage.LastName\" class=\"text-danger\"><small>{{errorMessage.LastName}}</small> </span>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Age</label>\r\n        <input type=\"number\" class=\"form-control\" id=\"age\" name=\"age\" formControlName=\"age\">\r\n        <span *ngIf=\"errorMessage.Age\" class=\"text-danger\"><small>{{errorMessage.Age}}</small> </span>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Position</label>\r\n        <select name=\"position\" formControlName=\"position\" class=\"form-control\">\r\n            <option value=\"Doctor\">Doctor</option>\r\n            <option value=\"Nurse\">Nurse</option>\r\n            <option value=\"Therapist\">Therapist</option>\r\n            <option value=\"Physician\">Physician</option>\r\n            <option value=\"Receptionist\">Receptionist</option>\r\n            <option value=\"Manager\">Manager</option>\r\n            <option value=\"Surgeon\">Surgeon</option>\r\n        </select>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Employment date</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"employmentDate\" name=\"employmentDate\" formControlName=\"employmentDate\">\r\n        <span *ngIf=\"errorMessage.EmploymentDate\" class=\"text-danger\"><small>{{errorMessage.EmploymentDate}}</small> </span>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Salary</label>\r\n        <input type=\"number\" class=\"form-control\" id=\"salary\" name=\"salary\" formControlName=\"salary\">\r\n    </div>\r\n    <button type=\"submit\" class=\"btn btn-success\" (click)=\"submitData()\">{{ submitLabel }}</button>\r\n    <button class=\"btn btn-secondary\" type=\"button\" routerLink=\"/staff-list\">Cancel</button>\r\n</form>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<p>Update clinic staff:</p>\r\n<form [formGroup]=\"staffForm\" (ngSubmit)=\"save()\">\r\n\r\n    <div class=\"form-group\">\r\n        <label>Firstname</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" formControlName=\"firstName\">\r\n        <span *ngIf=\"errorMessage.FirstName\" class=\"text-danger\"><small>{{errorMessage.FirstName}}</small> </span>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Lastname</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" formControlName=\"lastName\">\r\n        <span *ngIf=\"errorMessage.LastName\" class=\"text-danger\"><small>{{errorMessage.LastName}}</small> </span>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Age</label>\r\n        <input type=\"number\" class=\"form-control\" id=\"age\" name=\"age\" formControlName=\"age\">\r\n        <span *ngIf=\"errorMessage.Age\" class=\"text-danger\"><small>{{errorMessage.Age}}</small> </span>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Position</label>\r\n        <select name=\"position\" formControlName=\"position\" class=\"form-control\">\r\n            <option value=\"Doctor\">Doctor</option>\r\n            <option value=\"Nurse\">Nurse</option>\r\n            <option value=\"Therapist\">Therapist</option>\r\n            <option value=\"Physician\">Physician</option>\r\n            <option value=\"Receptionist\">Receptionist</option>\r\n            <option value=\"Manager\">Manager</option>\r\n            <option value=\"Surgeon\">Surgeon</option>\r\n        </select>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Employment date</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"employmentDate\" name=\"employmentDate\" formControlName=\"employmentDate\">\r\n        <span *ngIf=\"errorMessage.EmploymentDate\" class=\"text-danger\"><small>{{errorMessage.EmploymentDate}}</small> </span>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Salary</label>\r\n        <input type=\"number\" class=\"form-control\" id=\"salary\" name=\"salary\" formControlName=\"salary\">\r\n    </div>\r\n    <button type=\"submit\" class=\"btn btn-success\">Save</button>\r\n    <button class=\"btn btn-secondary\" type=\"button\" routerLink=\"/staff-list\">Cancel</button>\r\n</form>\r\n");
 
 /***/ }),
 
@@ -203,8 +203,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddStaffComponent", function() { return AddStaffComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _models_ClinicStaffDetail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/ClinicStaffDetail */ "./src/app/models/ClinicStaffDetail.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _models_MedicalServiceDetail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/MedicalServiceDetail */ "./src/app/models/MedicalServiceDetail.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/clinic-staff.service */ "./src/app/services/clinic-staff.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -220,28 +223,65 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
+
+
 let AddStaffComponent = class AddStaffComponent {
-    constructor(router) {
+    constructor(router, formBuilder, service, http) {
         this.router = router;
-        this.label = 'Add';
-        this.clinicStaff = new _models_ClinicStaffDetail__WEBPACK_IMPORTED_MODULE_1__["ClinicStaff"]();
+        this.formBuilder = formBuilder;
+        this.service = service;
+        this.http = http;
+        this.onSubmit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onClose = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.staffForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](''),
+            lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](''),
+            age: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](''),
+            position: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](''),
+            employmentDate: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](''),
+            salary: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('')
+        });
     }
-    ngOnInit() {
-    }
-    reloadData(action) {
-        this.router.navigate(['staff-list']);
+    save() {
+        const newStaff = this.staffForm.value;
+        this.service.addClinicStaff(this.currentMedicalService.id, newStaff)
+            .subscribe(() => {
+            alert('Succesfully added!');
+            this.onSubmit.emit();
+        }, err => {
+            alert('Clinic staff not added!');
+        });
     }
 };
 AddStaffComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
+    { type: _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_4__["ClinicStaffService"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
 ];
+__decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+    __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+], AddStaffComponent.prototype, "onSubmit", void 0);
+__decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+    __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+], AddStaffComponent.prototype, "onClose", void 0);
+__decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+    __metadata("design:type", _models_MedicalServiceDetail__WEBPACK_IMPORTED_MODULE_2__["MedicalServiceDetail"])
+], AddStaffComponent.prototype, "currentMedicalService", void 0);
 AddStaffComponent = __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
         selector: 'app-add-staff',
         template: __importDefault(__webpack_require__(/*! raw-loader!./add-staff.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/add-staff/add-staff.component.html")).default,
         styles: [__importDefault(__webpack_require__(/*! ./add-staff.component.css */ "./src/app/add-staff/add-staff.component.css")).default]
     }),
-    __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
+        _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_4__["ClinicStaffService"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
 ], AddStaffComponent);
 
 
@@ -918,20 +958,20 @@ HomePageComponent = __decorate([
 
 /***/ }),
 
-/***/ "./src/app/models/ClinicStaffDetail.ts":
-/*!*********************************************!*\
-  !*** ./src/app/models/ClinicStaffDetail.ts ***!
-  \*********************************************/
-/*! exports provided: ClinicStaff */
+/***/ "./src/app/models/MedicalServiceDetail.ts":
+/*!************************************************!*\
+  !*** ./src/app/models/MedicalServiceDetail.ts ***!
+  \************************************************/
+/*! exports provided: MedicalServiceDetail */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClinicStaff", function() { return ClinicStaff; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MedicalServiceDetail", function() { return MedicalServiceDetail; });
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-class ClinicStaff {
+class MedicalServiceDetail {
 }
 
 
@@ -1048,6 +1088,7 @@ let ClinicStaffService = class ClinicStaffService {
     constructor(http) {
         this.http = http;
         this.backendUrl = '/api/ClinicStaffs';
+        this.medicalServicerUrl = '/api/MedicalServices';
     }
     getClinicStaffs() {
         return this.http.get(this.backendUrl);
@@ -1055,8 +1096,8 @@ let ClinicStaffService = class ClinicStaffService {
     getStaffById(id) {
         return this.http.get(this.backendUrl + '/' + `${id}`);
     }
-    addClinicStaff(staff) {
-        return this.http.post(this.backendUrl, staff);
+    addClinicStaff(medicalServiceId, staff) {
+        return this.http.post(this.medicalServicerUrl + '/' + `${medicalServiceId}` + '/ClinicStaffs', staff);
     }
     updateClinicStaff(id, staff) {
         return this.http.put(this.backendUrl + '/' + `${id}`, staff);
@@ -1365,9 +1406,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateStaffComponent", function() { return UpdateStaffComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _models_ClinicStaffDetail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/ClinicStaffDetail */ "./src/app/models/ClinicStaffDetail.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/clinic-staff.service */ "./src/app/services/clinic-staff.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/clinic-staff.service */ "./src/app/services/clinic-staff.service.ts");
+/* harmony import */ var _models_medical_service_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/medical-service.model */ "./src/app/models/medical-service.model.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1385,62 +1426,59 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 let UpdateStaffComponent = class UpdateStaffComponent {
-    constructor(service) {
+    constructor(service, formBuilder) {
         this.service = service;
+        this.formBuilder = formBuilder;
         this.onSubmit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.staffForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+            firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](''),
+            lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](''),
+            age: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](''),
+            position: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](''),
+            employmentDate: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](''),
+            salary: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('')
+        });
         this.errorMessage = [];
     }
     ngOnInit() {
         this.initForm();
     }
     initForm() {
-        this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
-            firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.selectedStaff.firstName),
-            lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.selectedStaff.lastName),
-            age: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.selectedStaff.age),
-            position: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.selectedStaff.position),
-            employmentDate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.selectedStaff.employmentDate),
-            salary: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.selectedStaff.salary)
+        this.staffForm = this.formBuilder.group({
+            id: [this.staff.id],
+            firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.staff.firstName),
+            lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.staff.lastName),
+            age: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.staff.age),
+            position: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.staff.position),
+            employmentDate: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.staff.employmentDate),
+            salary: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.staff.salary),
+            medicalServiceId: [this.staff.medicalServiceId]
         });
-        this.form.updateValueAndValidity();
+        this.staffForm.updateValueAndValidity();
     }
-    submitData() {
-        try {
-            const clinicStaff = this.form.value;
-            clinicStaff.id = this.selectedStaff.id;
-            if (this.submitLabel === "Add") {
-                this.service.addClinicStaff(clinicStaff).subscribe(_ => {
-                    this.onSubmit.emit(this.submitLabel);
-                    alert("Clinic staff successfully added");
-                }, error => {
-                    alert(error);
-                });
-            }
-            else {
-                this.service.updateClinicStaff(clinicStaff.id, clinicStaff).subscribe(_ => {
-                    this.onSubmit.emit(this.submitLabel);
-                    alert("Clinic staff successfully updated");
-                }, error => {
-                    alert(error);
-                });
-            }
-        }
-        catch (e) {
-            alert(e.message);
-        }
+    save() {
+        this.service.updateClinicStaff(this.staff.id, this.staffForm.value)
+            .subscribe(_ => {
+            this.initForm();
+            this.onSubmit.emit();
+            alert("Clinic staff successfully updated");
+        }, error => {
+            alert(error);
+        });
     }
 };
 UpdateStaffComponent.ctorParameters = () => [
-    { type: _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"] }
+    { type: _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_2__["ClinicStaffService"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"] }
 ];
 __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-    __metadata("design:type", String)
-], UpdateStaffComponent.prototype, "submitLabel", void 0);
+    __metadata("design:type", Object)
+], UpdateStaffComponent.prototype, "staff", void 0);
 __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-    __metadata("design:type", _models_ClinicStaffDetail__WEBPACK_IMPORTED_MODULE_1__["ClinicStaff"])
-], UpdateStaffComponent.prototype, "selectedStaff", void 0);
+    __metadata("design:type", _models_medical_service_model__WEBPACK_IMPORTED_MODULE_3__["MedicalService"])
+], UpdateStaffComponent.prototype, "currentMedicalService", void 0);
 __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
     __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
@@ -1451,7 +1489,8 @@ UpdateStaffComponent = __decorate([
         template: __importDefault(__webpack_require__(/*! raw-loader!./update-staff.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/update-staff/update-staff.component.html")).default,
         styles: [__importDefault(__webpack_require__(/*! ./update-staff.component.css */ "./src/app/update-staff/update-staff.component.css")).default]
     }),
-    __metadata("design:paramtypes", [_services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"]])
+    __metadata("design:paramtypes", [_services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_2__["ClinicStaffService"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
 ], UpdateStaffComponent);
 
 
