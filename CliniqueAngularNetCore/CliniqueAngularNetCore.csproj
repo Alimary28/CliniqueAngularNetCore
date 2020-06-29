@@ -66,6 +66,7 @@
     <None Remove="ClientApp\src\app\models\medical-service.model.ts" />
     <None Remove="ClientApp\src\app\models\MedicalServiceDetail.ts" />
     <None Remove="ClientApp\src\app\models\StaffForMedicalService.ts" />
+    <None Remove="ClientApp\src\app\models\user.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +78,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\medical-service.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\MedicalServiceDetail.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\StaffForMedicalService.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\user.model.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

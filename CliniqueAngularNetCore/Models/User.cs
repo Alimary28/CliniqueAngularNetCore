@@ -18,5 +18,7 @@ namespace CliniqueAngularNetCore.Models
         public string Password { get; set; }
         public string Token { get; set; }
 
+        public string UserRole { get; set; } = "User";
+
     }
 }

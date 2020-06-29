@@ -1,0 +1,66 @@
+<div class="justify-content-center align-items-center container">
+    <div class="row justify-content-center align-items-center header">
+        <div>
+            <h1 class="p-5">Edit profile</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center" id="formRow">
+
+        <form [formGroup]="profileForm" (ngSubmit)="saveUserData()">
+            <div class="form-group">
+                <label for="firstName">Firstname</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+                <div *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)"
+                     class="text-danger">
+                    <div *ngIf="profileForm.controls['firstName'].errors.required">
+                        Firstname is required.
+                    </div>
+                    <div *ngIf="profileForm.controls['firstName'].errors.pattern">
+                        Firstname must contain only letters.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Lastname</label>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+                <div *ngIf="profileForm.controls['lastName'].invalid && (profileForm.controls['lastName'].dirty || profileForm.controls['lastName'].touched)"
+                     class="text-danger">
+                    <div *ngIf="profileForm.controls['lastName'].errors.required">
+                        Lastname is required.
+                    </div>
+                    <div *ngIf="profileForm.controls['lastName'].errors.pattern">
+                        Lastname must contain only letters.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" formControlName="username" required>
+                <div *ngIf="profileForm.controls['username'].invalid && (profileForm.controls['username'].dirty || profileForm.controls['username'].touched)"
+                     class="text-danger">
+                    <div *ngIf="profileForm.controls['username'].errors.required">
+                        Username is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" formControlName="email" required>
+                <div *ngIf="profileForm.controls['email'].invalid && (profileForm.controls['email'].dirty || profileForm.controls['email'].touched)"
+                     class="text-danger">
+                    <div *ngIf="profileForm.controls['email'].errors.required">
+                        Email is required.
+                    </div>
+                    <div *ngIf="profileForm.controls['email'].errors.email">
+                        Enter a valid email address.
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid">Save</button>
+            <button class="btn btn-secondary" type="button" (click)="goBack()">Back</button>
+        </form>
+    </div>
+</div>
+

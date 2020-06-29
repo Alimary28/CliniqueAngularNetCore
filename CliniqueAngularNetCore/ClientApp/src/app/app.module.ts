@@ -17,6 +17,16 @@ import { StaffListComponent } from './staff-list/staff-list.component';
 import { StaffDetailsComponent } from './staff-details/staff-details.component';
 import { AddStaffComponent } from './add-staff/add-staff.component';
 import { UpdateStaffComponent } from './update-staff/update-staff.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ClinicStaffService } from './services/clinic-staff.service';
+import { AuthenticateService } from './services/authenticate.service';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+    return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -31,13 +41,23 @@ import { UpdateStaffComponent } from './update-staff/update-staff.component';
     StaffListComponent,
     StaffDetailsComponent,
     AddStaffComponent,
-    UpdateStaffComponent
+    UpdateStaffComponent,
+    UserProfileComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
       HttpClientModule,
      ReactiveFormsModule,
-    FormsModule,
+      FormsModule,
+      JwtModule.forRoot({
+          config: {
+              tokenGetter,
+              whitelistedDomains: ['localhost:5001'],
+              blacklistedRoutes: ['localhost:5001/users/authenticate']
+          },
+      }),
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -45,17 +65,23 @@ import { UpdateStaffComponent } from './update-staff/update-staff.component';
       { path: 'medical-service-list/:id', component: MedicalServiceDetailsComponent },
       { path: 'update-medical-service/:id', component: UpdateMedicalServiceComponent },
       { path: 'add-medical-service', component: AddMedicalServiceComponent },
-        { path: 'staff-list', component: StaffListComponent },
-        { path: 'staff-list/:id', component: StaffDetailsComponent },
-        { path: 'add-staff', component: AddStaffComponent },
-        { path: 'update-staff', component: UpdateStaffComponent }
+       { path: 'staff-list', component: StaffListComponent },
+       { path: 'staff-list/:id', component: StaffDetailsComponent },
+       { path: 'add-staff', component: AddStaffComponent },
+       { path: 'update-staff', component: UpdateStaffComponent },
+       { path: 'user-profile', component: UserProfileComponent },
+       { path: 'login', component: LoginComponent },
+       { path: 'register', component: RegisterComponent }
+
     ])
     ],
    entryComponents: [
     AddMedicalServiceComponent,
     UpdateMedicalServiceComponent,
-  ],
-    providers: [],
+    ],
+    providers: [
+        ClinicStaffService,
+        AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

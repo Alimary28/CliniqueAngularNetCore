@@ -1,0 +1,93 @@
+<div class="container-flex" id="login">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <h2>Register</h2>
+            </div>
+            <div class="card-body py-1">
+                <form [formGroup]="form"
+                      (ngSubmit)="addUser()">
+
+                    <div class="form-group">
+                        <label for="firstName" class="text-light font-weight-bold">Firstname</label>
+                        <input type="text" class="form-control" formControlName="firstName" placeholder="Firstname" required>
+                        <div *ngIf="form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)" class="text-danger">
+                            <div *ngIf="form.controls['firstName'].errors.required">
+                                Firstname is required.
+                            </div>
+                            <div *ngIf="form.controls['firstName'].errors.pattern">
+                                Firstname must contain only letters.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName" class="text-light font-weight-bold">Lastname</label>
+                        <input type="text" class="form-control" formControlName="lastName" placeholder="Lastname" required>
+                        <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)" class="text-danger">
+                            <div *ngIf="form.controls['lastName'].errors.required">
+                                Lastname is required.
+                            </div>
+                            <div *ngIf="form.controls['lastName'].errors.pattern">
+                                Lastname must contain only letters.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="text-light font-weight-bold">Username</label>
+                        <input type="text" class="form-control" formControlName="username" placeholder="Username" required />
+                        <div *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)" class="text-danger">
+                            <div *ngIf="form.controls['username'].errors.required">
+                                Username is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="text-light font-weight-bold">Email</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Email" required>
+                        <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="text-danger">
+                            <div *ngIf="form.controls['email'].errors.required">
+                                Email is required.
+                            </div>
+                            <div *ngIf="form.controls['email'].errors.email">
+                                Enter a valid email address.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="text-light font-weight-bold">Password</label>
+                        <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
+                        <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)" class="text-danger">
+                            <div *ngIf="form.controls['password'].errors.required">Password is required!</div>
+                            <div *ngIf="form.controls['password'].errors.hasNumber">Password must contain 1 number!</div>
+                            <div *ngIf="form.controls['password'].errors.hasCapitalCase">Password must contain 1 capital case!</div>
+                            <div *ngIf="form.controls['password'].errors.hasSmallCase">Password must contain 1 small case!</div>
+                            <div *ngIf="form.controls['password'].errors.minlength">Password must contain at least 8 characters!</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmedPassword" class="text-light font-weight-bold">Confirm password</label>
+                        <input type="password" class="form-control" formControlName="confirmedPassword" placeholder="Confirm password" required>
+                        <div *ngIf="form.controls['confirmedPassword'].invalid && (form.controls['confirmedPassword'].dirty || form.controls['confirmedPassword'].touched)" class="text-danger">
+                            <div *ngIf="form.controls['confirmedPassword'].errors.required">Confirmation password is required!</div>
+                            <div *ngIf="form.controls['confirmedPassword'].errors.mustMatch">Password must match!</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-sm login_btn mr-4" [disabled]="!form.valid">Register</button>
+                        <button class="btn btn-sm btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                    </div>
+
+                    <div class="d-flex justify-content-center links">
+                        Already have an account?<a href="/login" class="subLinks">Go to login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
