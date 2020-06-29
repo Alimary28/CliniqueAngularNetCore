@@ -156,7 +156,7 @@ namespace CliniqueAngularNetCore.Controllers
         /// <param name="id">The id of the medical service</param>
         /// <param name="staff">The Clinic staff object with all its properties</param>
         /// <returns>The created Clinis staff object</returns>
-        /// <response code="201">Returns the newly created item</response>
+        /// <response code="201">Returns the success code for the created item</response>
         [HttpPost("{id}/ClinicStaffs")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<ClinicStaff>> PostClinicStaff(long id, ClinicStaff staff) {

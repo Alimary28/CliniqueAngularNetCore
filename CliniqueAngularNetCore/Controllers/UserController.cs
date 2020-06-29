@@ -27,7 +27,11 @@ namespace CliniqueAngularNetCore.Controllers
                 _mapper = mapper;
                 _appSettings = appSettings.Value;
         }
-
+        /// <summary>
+        /// Authenticate a user
+        /// </summary>
+        /// <param name="model">The user object for authentication</param>
+        /// <returns></returns>
             [AllowAnonymous]
             [HttpPost("authenticate")]
             public IActionResult Authenticate([FromBody]AuthenticatePostModel model)
@@ -42,6 +46,11 @@ namespace CliniqueAngularNetCore.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Register a user
+        /// </summary>
+        /// <param name="model">User object for register</param>
+        /// <returns>Response code 200 if was succesfully rergistered</returns>
         [AllowAnonymous]
         [HttpPost("register")]
         public IActionResult Register([FromBody]UserRegister model)
@@ -61,7 +70,10 @@ namespace CliniqueAngularNetCore.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-
+        /// <summary>
+        ///Get a list of users
+        /// </summary>
+        /// <returns>A list of registered users</returns>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -70,6 +82,11 @@ namespace CliniqueAngularNetCore.Controllers
             return Ok(model);
         }
 
+        /// <summary>
+        /// Search a user by its id
+        /// </summary>
+        /// <param name="id">The user id for search</param>
+        /// <returns>The user with the given id</returns>
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {
@@ -78,6 +95,12 @@ namespace CliniqueAngularNetCore.Controllers
             return Ok(model);
         }
 
+        /// <summary>
+        /// Updates an existing user
+        /// </summary>
+        /// <param name="id">The id of the user for update</param>
+        /// <param name="model">The user object for update</param>
+        /// <returns>Returns ok if the object was succesfully updated</returns>
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody]UserUpdate model)
         {
@@ -97,6 +120,12 @@ namespace CliniqueAngularNetCore.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        /// <summary>
+        /// Remove a user with the given id
+        /// </summary>
+        /// <param name="id">The id of the user for remove</param>
+        /// <returns>Returns Ok if the object was succesfully deleted</returns>
 
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
