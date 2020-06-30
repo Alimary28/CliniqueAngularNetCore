@@ -27,21 +27,20 @@ namespace CliniqueAngularNetCore.Controllers
         /// <summary>
         /// Gets a list of the medical services
         /// </summary>
-        /// <param name="searchText">Filter services by description or type</param>
+        /// <param name="price">Filter medical services with a lower price that price parameter</param>
         /// <returns>A list of medical services</returns>
         /// <response code="200">Returns 200 if the request was succesfully completed</response>
-        
+
         //GET: api/MedicalServices
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<MedicalServiceDto>>> GetMedicalServices(string searchText=null)
+        public async Task<ActionResult<IEnumerable<MedicalServiceDto>>> GetMedicalServices(int price)
         {
             var result = _context.MedicalServices as IQueryable<MedicalService>;
 
-            if (searchText != null)
+            if (price > 0)
             {
-                result = result.Where(s => s.Name.ToLower().Contains(searchText) || 
-                                           s.Description.ToLower().Contains(searchText));
+                result = result.Where(ms => ms.Price <= price);
             }
             var medicalServices = await result.Select(s => new MedicalServiceDto
             {

@@ -20,7 +20,6 @@ export class NavMenuComponent implements OnInit{
     ngOnInit() {
         this.authService.currentLoggedInUser.subscribe(loggedInUser => {
             this.loggedInUser = loggedInUser;
-            console.log(this.loggedInUser);
         });
     }
 

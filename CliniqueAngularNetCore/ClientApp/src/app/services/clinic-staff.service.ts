@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { StaffForMedicalService } from '../models/StaffForMedicalService';
 import { ClinicStaff } from '../models/ClinicStaffDetail';
 
@@ -33,10 +33,10 @@ export class ClinicStaffService {
         return this.http.delete<ClinicStaff>(this.backendUrl + `/${id}`);
     }
 
-    //public getFilteredStaff(searchText: string) {
-    //    let params = new HttpParams();
-    //    params = params.append('searchText', searchText);
-    //    return this.http.get<ClinicStaff[]>(this.backendUrl, { params: params });
-    //}
+    public getFilteredStaff(searchText: string) {
+        let params = new HttpParams();
+        params = params.append('searchText', searchText);
+        return this.http.get<ClinicStaff[]>(this.backendUrl, { params: params });
+    }
 }
 

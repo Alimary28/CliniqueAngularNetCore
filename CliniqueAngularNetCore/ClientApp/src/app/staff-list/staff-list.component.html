@@ -27,7 +27,7 @@
                     <h5>{{ staff.position }}</h5>
                     <p>{{ staff.firstName }} {{ staff.lastName }}</p>
                     
-                    <p *ngIf="currentUserRole == 'Admin' || currentUserRole == 'Moderator'">
+                    <p *ngIf="currentUserRole == 'Moderator'">
                         <a class="btn btn-primary" [routerLink]="['/staff-list/', staff.id]">Details</a>
                     </p>
                     <hr />

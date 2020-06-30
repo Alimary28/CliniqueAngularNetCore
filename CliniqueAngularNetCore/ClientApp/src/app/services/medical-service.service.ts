@@ -31,9 +31,9 @@ export class MedicalServiceService {
         return this.http.delete<MedicalService>(this.backendUrl + `/${id}`);
     }
 
-   public getFilteredMedicalService(searchText: string) {
+    public getFilteredMedicalService(price: number) {
         let params = new HttpParams();
-        params = params.append('searchText', searchText);
+        params = params.append('price', price.toString());
         return this.http.get<MedicalService[]>(this.backendUrl, { params: params });
     }
 }

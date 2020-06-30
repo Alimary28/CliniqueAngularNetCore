@@ -16,7 +16,7 @@ export class MedicalServiceListComponent implements OnInit {
     public services: MedicalService[];
     public isOpen = false;
     public id: number;
-    public searchText: string;
+    public price: number;
     public isLoggedIn: boolean;
     public currentUserRole: string;
 
@@ -41,15 +41,15 @@ export class MedicalServiceListComponent implements OnInit {
 
     doSearch() {
         this.router.navigate([], {
-            queryParams: { searchText: this.searchText }
+            queryParams: { price: this.price }
         });
         this.getMedicalServices();
     }
 
     getMedicalServices() {
         
-        if (this.searchText) {
-            this.medicalService.getFilteredMedicalService(this.searchText).subscribe(
+        if (this.price) {
+            this.medicalService.getFilteredMedicalService(this.price).subscribe(
                 result => this.services = result
             );
         } else {

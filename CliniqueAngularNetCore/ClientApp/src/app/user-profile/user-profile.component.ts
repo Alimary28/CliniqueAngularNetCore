@@ -28,7 +28,9 @@ export class UserProfileComponent implements OnInit {
         });
     }
 
-  ngOnInit() {
+    ngOnInit() {
+        this.getUserDetails();
+        this.createUserProfileForm();
   }
 
     createUserProfileForm() {

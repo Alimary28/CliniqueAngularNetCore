@@ -1,11 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace CliniqueAngularNetCore.Models
 {
     public enum Domain { 
+
+        [EnumMember(Value = "Orthopedics")]
         Orthopedics,
+
+        [EnumMember(Value = "Cardiology")]
         Cardiology,
+
+        [EnumMember(Value = "Physiokinetotherapy")]
         Physiokinetotherapy,
+
+        [EnumMember(Value = "Surgery")]
         Surgery
 
     }

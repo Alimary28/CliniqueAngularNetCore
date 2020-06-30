@@ -33,12 +33,12 @@ namespace CliniqueAngularNetCore.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ClinicStaffForServices>>> GetStaffs(string searchText = null)
         {
-            IQueryable<ClinicStaff> staffs = _context.Staffs;
+            IQueryable<ClinicStaff> staffs =  _context.Staffs;
 
             if (searchText != null)
             {
-                staffs = staffs.Where(s => s.FirstName.ToLower().Contains(searchText) ||
-                                           s.LastName.ToLower().Contains(searchText));
+                staffs = staffs.Where(s => s.FirstName.ToLower().Contains(searchText) || s.LastName.Contains(searchText));
+                   
             }
             var staffsList = await staffs.Select(s => new ClinicStaffForServices 
             {

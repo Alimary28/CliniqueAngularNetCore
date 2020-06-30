@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>appointment works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"justify-content-center align-items-center container\">\r\n    <div class=\"row justify-content-center align-items-center header\">\r\n        <div>\r\n            <h1 class=\"p-5\">Appointment informations:</h1>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"row justify-content-center align-items-center\" id=\"formRow\">\r\n\r\n        <form [formGroup]=\"appointmentForm\" (ngSubmit)=\"saveAppointment()\">\r\n            <div class=\"form-group\">\r\n                <label for=\"userName\">User's name:</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"userName\" formControlName=\"userName\" required>\r\n                <div *ngIf=\"appointmentForm.controls['userName'].invalid && (appointmentForm.controls['userName'].dirty || appointmentForm.controls['userName'].touched)\"\r\n                     class=\"text-danger\">\r\n                    <div *ngIf=\"appointmentForm.controls['userName'].errors.required\">\r\n                        Name is required.\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"staffName\">Doctor's name:</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"staffName\" formControlName=\"staffName\" required>\r\n                <div *ngIf=\"appointmentForm.controls['staffName'].invalid && (appointmentForm.controls['staffName'].dirty || appointmentForm.controls['staffName'].touched)\"\r\n                     class=\"text-danger\">\r\n                    <div *ngIf=\"appointmentForm.controls['staffName'].errors.required\">\r\n                        Doctor's name is required.\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"reason\">Reason</label>\r\n                <textarea name=\"reason\" class=\"form-control\" formControlName=\"reason\" required>\r\n                 </textarea>\r\n                <div *ngIf=\"appointmentForm.controls['reason'].invalid && (appointmentForm.controls['reson'].dirty || appointmentForm.controls['reason'].touched)\"\r\n                     class=\"text-danger\">\r\n                    <div *ngIf=\"appointmentForm.controls['reson'].errors.required\">\r\n                        Reason is required.\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"appointmentTime\">Appointment time</label>\r\n                <input type=\"date\" class=\"form-control\" id=\"appointmentTime\" name=\"appointmentTime\" formControlName=\"appointmentTime\">\r\n                <div *ngIf=\"appointmentForm.controls['appointmentTime'].invalid && (appointmentForm.controls['appointmentTime'].dirty || appointmentForm.controls['appointmentTime'].touched)\"\r\n                     class=\"text-danger\">\r\n                    <div *ngIf=\"appointmentForm.controls['appointmentTime'].errors.required\">\r\n                        Date and hour are required.\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!appointmentForm.valid\">Save</button>\r\n            <button class=\"btn btn-secondary\" type=\"button\" (click)=\"goBack()\">Back</button>\r\n        </form>\r\n    </div>\r\n</div>\n");
 
 /***/ }),
 
@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Medical services</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/medical-service-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Search…\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Search\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"searchText\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let service of services\" class=\"col-md-4 col-sm-6 service\" (click)=\"id = service.id\">\r\n        \r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h4>{{ service[0].domain }}</h4>\r\n            </div>\r\n            <div *ngFor=\"let item of service\" class=\"card-body\">\r\n            <p><b>{{ item.name }}</b></p>\r\n            <p>{{ item.description | slice:0:50 }}...</p>\r\n            <p>\r\n               <a class=\"btn btn-primary\" [routerLink]=\"['/medical-service-list/', item.id]\">Details</a>\r\n            </p>\r\n            <hr/>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Medical services</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/medical-service-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Enter maxim price\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Enter the maximum price\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"price\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let service of services\" class=\"col-md-4 col-sm-6 service\" (click)=\"id = service.id\">\r\n        \r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h4>{{ service[0].domain }}</h4>\r\n            </div>\r\n            <div *ngFor=\"let item of service\" class=\"card-body\">\r\n            <p><b>{{ item.name }}</b></p>\r\n            <p>{{ item.description | slice:0:50 }}...</p>\r\n            <p>\r\n               <a class=\"btn btn-primary\" [routerLink]=\"['/medical-service-list/', item.id]\">Details</a>\r\n            </p>\r\n            <hr/>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -139,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-flex\" id=\"login\">\r\n    <div class=\"d-flex justify-content-center h-100\">\r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h2>Register</h2>\r\n            </div>\r\n            <div class=\"card-body py-1\">\r\n                <form [formGroup]=\"form\"\r\n                      (ngSubmit)=\"addUser()\">\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"firstName\" class=\"text-light font-weight-bold\">Firstname</label>\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"firstName\" placeholder=\"Firstname\" required>\r\n                        <div *ngIf=\"form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['firstName'].errors.required\">\r\n                                Firstname is required.\r\n                            </div>\r\n                            <div *ngIf=\"form.controls['firstName'].errors.pattern\">\r\n                                Firstname must contain only letters.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"lastName\" class=\"text-light font-weight-bold\">Lastname</label>\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"lastName\" placeholder=\"Lastname\" required>\r\n                        <div *ngIf=\"form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['lastName'].errors.required\">\r\n                                Lastname is required.\r\n                            </div>\r\n                            <div *ngIf=\"form.controls['lastName'].errors.pattern\">\r\n                                Lastname must contain only letters.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"username\" class=\"text-light font-weight-bold\">Username</label>\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"username\" placeholder=\"Username\" required />\r\n                        <div *ngIf=\"form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['username'].errors.required\">\r\n                                Username is required.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"email\" class=\"text-light font-weight-bold\">Email</label>\r\n                        <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"Email\" required>\r\n                        <div *ngIf=\"form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['email'].errors.required\">\r\n                                Email is required.\r\n                            </div>\r\n                            <div *ngIf=\"form.controls['email'].errors.email\">\r\n                                Enter a valid email address.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"text-light font-weight-bold\">Password</label>\r\n                        <input type=\"password\" class=\"form-control\" formControlName=\"password\" placeholder=\"Password\" required>\r\n                        <div *ngIf=\"form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['password'].errors.required\">Password is required!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.hasNumber\">Password must contain 1 number!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.hasCapitalCase\">Password must contain 1 capital case!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.hasSmallCase\">Password must contain 1 small case!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.minlength\">Password must contain at least 8 characters!</div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"confirmedPassword\" class=\"text-light font-weight-bold\">Confirm password</label>\r\n                        <input type=\"password\" class=\"form-control\" formControlName=\"confirmedPassword\" placeholder=\"Confirm password\" required>\r\n                        <div *ngIf=\"form.controls['confirmedPassword'].invalid && (form.controls['confirmedPassword'].dirty || form.controls['confirmedPassword'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['confirmedPassword'].errors.required\">Confirmation password is required!</div>\r\n                            <div *ngIf=\"form.controls['confirmedPassword'].errors.mustMatch\">Password must match!</div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <button class=\"btn btn-sm login_btn mr-4\" [disabled]=\"!form.valid\">Register</button>\r\n                        <button class=\"btn btn-sm btn-secondary\" type=\"reset\" (click)=\"onReset()\">Cancel</button>\r\n                    </div>\r\n\r\n                    <div class=\"d-flex justify-content-center links\">\r\n                        Already have an account?<a href=\"/login\" class=\"subLinks\">Go to login</a>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-flex\" id=\"login\">\r\n    <div class=\"d-flex justify-content-center h-100\">\r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h2>Register</h2>\r\n            </div>\r\n            <div class=\"card-body py-1\">\r\n                <form [formGroup]=\"form\"\r\n                      (ngSubmit)=\"addUser()\">\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"firstName\" class=\"text-light font-weight-bold\">Firstname</label>\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"firstName\" placeholder=\"Firstname\" required>\r\n                        <div *ngIf=\"form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['firstName'].errors.required\">\r\n                                Firstname is required.\r\n                            </div>\r\n                            <div *ngIf=\"form.controls['firstName'].errors.pattern\">\r\n                                Firstname must contain only letters.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"lastName\" class=\"text-light font-weight-bold\">Lastname</label>\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"lastName\" placeholder=\"Lastname\" required>\r\n                        <div *ngIf=\"form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['lastName'].errors.required\">\r\n                                Lastname is required.\r\n                            </div>\r\n                            <div *ngIf=\"form.controls['lastName'].errors.pattern\">\r\n                                Lastname must contain only letters.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"username\" class=\"text-light font-weight-bold\">Username</label>\r\n                        <input type=\"text\" class=\"form-control\" formControlName=\"username\" placeholder=\"Username\" required />\r\n                        <div *ngIf=\"form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['username'].errors.required\">\r\n                                Username is required.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"email\" class=\"text-light font-weight-bold\">Email</label>\r\n                        <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"Email\" required>\r\n                        <div *ngIf=\"form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['email'].errors.required\">\r\n                                Email is required.\r\n                            </div>\r\n                            <div *ngIf=\"form.controls['email'].errors.email\">\r\n                                Enter a valid email address.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\" class=\"text-light font-weight-bold\">Password</label>\r\n                        <input type=\"password\" class=\"form-control\" formControlName=\"password\" placeholder=\"Password\" required>\r\n                        <div *ngIf=\"form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['password'].errors.required\">Password is required!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.hasNumber\">Password must contain 1 number!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.hasCapitalCase\">Password must contain 1 capital case!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.hasSmallCase\">Password must contain 1 small case!</div>\r\n                            <div *ngIf=\"form.controls['password'].errors.minlength\">Password must contain at least 8 characters!</div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <label for=\"confirmedPassword\" class=\"text-light font-weight-bold\">Confirm password</label>\r\n                        <input type=\"password\" class=\"form-control\" formControlName=\"confirmedPassword\" placeholder=\"Confirm password\" required>\r\n                        <div *ngIf=\"form.controls['confirmedPassword'].invalid && (form.controls['confirmedPassword'].dirty || form.controls['confirmedPassword'].touched)\" class=\"text-danger\">\r\n                            <div *ngIf=\"form.controls['confirmedPassword'].errors.required\">Confirmation password is required!</div>\r\n                            <div *ngIf=\"form.controls['confirmedPassword'].errors.mustMatch\">Password must match!</div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-group\">\r\n                        <button class=\"btn btn-sm login_btn mr-4\" [disabled]=\"!form.valid\">Register</button>\r\n                        <button class=\"btn btn-sm btn-secondary\" type=\"reset\" (click)=\"onReset()\">Cancel</button>\r\n                    </div>\r\n\r\n                    <div class=\"d-flex justify-content-center links\">\r\n                        Already have an account?<a href=\"/login\" class=\"subLinks\">Go to login</a>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Clinic Staff list</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/staff-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Search…\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Search\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"searchText\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let staff of staffs\" class=\"col-md-4 col-sm-6 staff\" (click)=\"id = staff.id\">\r\n\r\n            <div class=\"card\">\r\n                    <h5>{{ staff.position }}</h5>\r\n                    <p>{{ staff.firstName }} {{ staff.lastName }}</p>\r\n                    \r\n                    <p *ngIf=\"currentUserRole == 'Admin' || currentUserRole == 'Moderator'\">\r\n                        <a class=\"btn btn-primary\" [routerLink]=\"['/staff-list/', staff.id]\">Details</a>\r\n                    </p>\r\n                    <hr />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Clinic Staff list</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/staff-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Search…\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Search\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"searchText\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let staff of staffs\" class=\"col-md-4 col-sm-6 staff\" (click)=\"id = staff.id\">\r\n\r\n            <div class=\"card\">\r\n                    <h5>{{ staff.position }}</h5>\r\n                    <p>{{ staff.firstName }} {{ staff.lastName }}</p>\r\n                    \r\n                    <p *ngIf=\"currentUserRole == 'Moderator'\">\r\n                        <a class=\"btn btn-primary\" [routerLink]=\"['/staff-list/', staff.id]\">Details</a>\r\n                    </p>\r\n                    <hr />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n");
 
 /***/ }),
 
@@ -879,13 +879,13 @@ let MedicalServiceListComponent = class MedicalServiceListComponent {
     }
     doSearch() {
         this.router.navigate([], {
-            queryParams: { searchText: this.searchText }
+            queryParams: { price: this.price }
         });
         this.getMedicalServices();
     }
     getMedicalServices() {
-        if (this.searchText) {
-            this.medicalService.getFilteredMedicalService(this.searchText).subscribe(result => this.services = result);
+        if (this.price) {
+            this.medicalService.getFilteredMedicalService(this.price).subscribe(result => this.services = result);
         }
         else {
             this.http.get(this.baseUrl + 'api/MedicalServices').subscribe(result => {
@@ -1400,7 +1400,6 @@ let NavMenuComponent = class NavMenuComponent {
     ngOnInit() {
         this.authService.currentLoggedInUser.subscribe(loggedInUser => {
             this.loggedInUser = loggedInUser;
-            console.log(this.loggedInUser);
         });
     }
     collapse() {
@@ -1782,6 +1781,11 @@ let ClinicStaffService = class ClinicStaffService {
     deleteClinicStaff(id) {
         return this.http.delete(this.backendUrl + `/${id}`);
     }
+    getFilteredStaff(searchText) {
+        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
+        params = params.append('searchText', searchText);
+        return this.http.get(this.backendUrl, { params: params });
+    }
 };
 ClinicStaffService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
@@ -1843,9 +1847,9 @@ let MedicalServiceService = class MedicalServiceService {
     deleteMedicalService(id) {
         return this.http.delete(this.backendUrl + `/${id}`);
     }
-    getFilteredMedicalService(searchText) {
+    getFilteredMedicalService(price) {
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
-        params = params.append('searchText', searchText);
+        params = params.append('price', price.toString());
         return this.http.get(this.backendUrl, { params: params });
     }
 };
@@ -1993,6 +1997,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/clinic-staff.service */ "./src/app/services/clinic-staff.service.ts");
+/* harmony import */ var _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/authenticate.service */ "./src/app/services/authenticate.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2012,24 +2017,39 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 let StaffListComponent = class StaffListComponent {
-    constructor(router, activatedRoute, service, http, baseUrl) {
+    constructor(router, activatedRoute, service, authService, http, baseUrl) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.service = service;
+        this.authService = authService;
         this.http = http;
         this.baseUrl = baseUrl;
         this.isOpen = false;
     }
     ngOnInit() {
         this.getStaffList();
+        this.isLoggedIn = this.authService.isLoggedIn();
+        this.currentUserRole = this.authService.getUserRole();
+    }
+    doSearch() {
+        this.router.navigate([], {
+            queryParams: { searchText: this.searchText }
+        });
+        this.getStaffList();
     }
     getStaffList() {
-        this.http.get(this.baseUrl + 'api/ClinicStaffs').subscribe(res => {
-            this.staffs = res;
-            console.log(this.staffs);
-        }, error => console.error(error));
-        this.router.navigate(['/staff-list']);
+        if (this.searchText) {
+            this.service.getFilteredStaff(this.searchText).subscribe(result => this.staffs = result);
+        }
+        else {
+            this.http.get(this.baseUrl + 'api/ClinicStaffs').subscribe(res => {
+                this.staffs = res;
+                console.log(this.staffs);
+            }, error => console.error(error));
+            this.router.navigate(['/staff-list']);
+        }
     }
     getStaffById(id) {
         return this.staffs.find(staff => staff.id === id);
@@ -2039,6 +2059,7 @@ StaffListComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] },
     { type: _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"] },
+    { type: _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticateService"] },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: ['BASE_URL',] }] }
 ];
@@ -2048,10 +2069,11 @@ StaffListComponent = __decorate([
         template: __importDefault(__webpack_require__(/*! raw-loader!./staff-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/staff-list/staff-list.component.html")).default,
         styles: [__importDefault(__webpack_require__(/*! ./staff-list.component.css */ "./src/app/staff-list/staff-list.component.css")).default]
     }),
-    __param(4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])('BASE_URL')),
+    __param(5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])('BASE_URL')),
     __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
         _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
         _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"],
+        _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticateService"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], String])
 ], StaffListComponent);
 
@@ -2230,6 +2252,8 @@ let UserProfileComponent = class UserProfileComponent {
         });
     }
     ngOnInit() {
+        this.getUserDetails();
+        this.createUserProfileForm();
     }
     createUserProfileForm() {
         this.profileForm = this.formBuilder.group({
