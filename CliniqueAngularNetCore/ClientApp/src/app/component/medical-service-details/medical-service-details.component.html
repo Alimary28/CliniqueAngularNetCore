@@ -18,17 +18,17 @@
         </div>
         <div class="row" id="medicalService-details-btn">
 
-            <div class="col-sm-6" id="crud-medicalService-btn">
-                <button class="btn btn-outline-danger btn-lg" type="button"
+            <div *ngIf="isUserLoggedIn" class="col-sm-6" id="crud-medicalService-btn">
+                <button *ngIf="currentUserRole == 'Admin'" class="btn btn-outline-danger btn-lg" type="button"
                         (click)="deleteMedicalService()">
                     Delete medical service
                 </button>
 
-                <button class="btn btn-outline-warning btn-lg" type="button"
+                <button *ngIf="currentUserRole == 'Admin'" class="btn btn-outline-warning btn-lg" type="button"
                         (click)="updateMedicalService()">
                     Update medical service
                 </button>
-                <button class="btn btn-outline-success btn-lg" type="button"
+                <button *ngIf="currentUserRole == 'Moderator'" class="btn btn-outline-success btn-lg" type="button"
                         (click)="staffFormToggle()">
                     Add a doctor
                 </button>
@@ -55,9 +55,9 @@
                     <td>{{ staff.firstName }}</td>
                     <td>{{ staff.lastName }}</td>
                     <td>
-                        <a class="btn btn-outline-primary btn-sm mr-3"
+                        <a *ngIf="currentUserRole == 'Moderator'" class="btn btn-outline-primary btn-sm mr-3"
                            (click)="updateStaff(staff)">Update</a>
-                        <a class="btn btn-outline-danger btn-sm"
+                        <a *ngIf="currentUserRole == 'Moderator'" class="btn btn-outline-danger btn-sm"
                            (click)="deleteStaff(staff.staffId)" (onSubmit)="reloadData()">Delete</a>
                     </td>
                 </tr>

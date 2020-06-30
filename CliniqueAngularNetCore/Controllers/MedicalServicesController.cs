@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CliniqueAngularNetCore.Models;
 using CliniqueAngularNetCore.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CliniqueAngularNetCore.Controllers
 {
@@ -98,6 +99,8 @@ namespace CliniqueAngularNetCore.Controllers
         /// <response code="404">Returns NotFound if the MedicalService id doesn't exist</response>
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+
+        [Authorize(Roles = UserRole.Admin)]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -139,6 +142,8 @@ namespace CliniqueAngularNetCore.Controllers
         /// <response code="201">Returns the newly created item</response>
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+
+        [Authorize(Roles = UserRole.Admin)]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<MedicalService>> PostMedicalServices(MedicalService medicalServices)
@@ -157,6 +162,8 @@ namespace CliniqueAngularNetCore.Controllers
         /// <param name="staff">The Clinic staff object with all its properties</param>
         /// <returns>The created Clinis staff object</returns>
         /// <response code="201">Returns the success code for the created item</response>
+        
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost("{id}/ClinicStaffs")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<ClinicStaff>> PostClinicStaff(long id, ClinicStaff staff) {
@@ -178,6 +185,8 @@ namespace CliniqueAngularNetCore.Controllers
         /// <returns>The removed MedicalServices object</returns>
         /// <response code="404">Returns NotFound if the id doesn't exist</response>
         /// <response code="200">Returns 200 and the removed item</response>
+        
+        [Authorize(Roles = UserRole.Admin)]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

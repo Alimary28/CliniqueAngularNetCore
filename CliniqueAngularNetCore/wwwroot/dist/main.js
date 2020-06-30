@@ -26,6 +26,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/appointment/appointment.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/appointment/appointment.component.html ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>appointment works!</p>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/component/add-medical-service/add-medical-service.component.html":
 /*!************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/component/add-medical-service/add-medical-service.component.html ***!
@@ -48,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n    <div *ngIf=\"currentMedicalService\" class=\"container\" id=\"details\">\r\n        <div class=\"jumbotron\">\r\n            <h1>{{ currentMedicalService.name }}</h1>\r\n        </div>\r\n        <div class=\"container\">\r\n            <div class=\"card\" id=\"medicalServiceDetails\">\r\n                <h4><b>Details:</b></h4>\r\n                <h5><b>Domain: </b>{{currentMedicalService.domain}}</h5>\r\n                <h5><b>Description: </b>{{ currentMedicalService.description }}</h5>\r\n                <h5><b>Minutes: </b>{{ currentMedicalService.minutes }}</h5>\r\n                <h5><b>Price: </b>{{ currentMedicalService.price }}</h5>\r\n                <h5><b>Doctors: </b> </h5>\r\n                <!--<div *ngFor=\"let staff of currentMedicalService.staffs\">\r\n                    <p>{{staff.position}}: {{staff.firstName}} {{staff.lastName}}</p>\r\n                </div>-->\r\n            </div>\r\n        </div>\r\n        <div class=\"row\" id=\"medicalService-details-btn\">\r\n\r\n            <div class=\"col-sm-6\" id=\"crud-medicalService-btn\">\r\n                <button class=\"btn btn-outline-danger btn-lg\" type=\"button\"\r\n                        (click)=\"deleteMedicalService()\">\r\n                    Delete medical service\r\n                </button>\r\n\r\n                <button class=\"btn btn-outline-warning btn-lg\" type=\"button\"\r\n                        (click)=\"updateMedicalService()\">\r\n                    Update medical service\r\n                </button>\r\n                <button class=\"btn btn-outline-success btn-lg\" type=\"button\"\r\n                        (click)=\"staffFormToggle()\">\r\n                    Add a doctor\r\n                </button>\r\n            </div>\r\n        </div>\r\n        <div *ngIf=\"isOpen\">\r\n            <app-update-medical-service [selectedMedicalService]=\"currentMedicalService\" [submitLabel]=\"label\" (onSubmit)=\"reloadData()\">\r\n            </app-update-medical-service>\r\n        </div>\r\n\r\n        <h4 *ngIf=\"currentMedicalService.staffs.length > 0\">Clinic staff:</h4>\r\n        <table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"currentMedicalService.staffs.length > 0\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Position</th>\r\n                    <th>Firstname</th>\r\n                    <th>Lastname</th>\r\n                    <th></th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let staff of currentMedicalService.staffs\">\r\n                    <td>{{ staff.position }}</td>\r\n                    <td>{{ staff.firstName }}</td>\r\n                    <td>{{ staff.lastName }}</td>\r\n                    <td>\r\n                        <a class=\"btn btn-outline-primary btn-sm mr-3\"\r\n                           (click)=\"updateStaff(staff)\">Update</a>\r\n                        <a class=\"btn btn-outline-danger btn-sm\"\r\n                           (click)=\"deleteStaff(staff.staffId)\" (onSubmit)=\"reloadData()\">Delete</a>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n        <div *ngIf=\"addStaffMode\">\r\n            <app-add-staff [currentMedicalService]=\"currentMedicalService\" (onSubmit)=\"addStaffPassChild()\"\r\n                             (onClose)=\"closeFormAtCancel()\">\r\n            </app-add-staff>\r\n        </div>\r\n        <div *ngIf=\"updateStaffMode\">\r\n            <app-update-staff [currentMedicalService]=\"currentMedicalService\" [staff]=\"staffs\"\r\n                                 (onSubmit)=\"reloadData()\" (onClose)=\"closeUpdateFormAtCancel()\">\r\n            </app-update-staff>\r\n            <hr />\r\n        </div>\r\n        <div><hr /> <button id=\"backBtn\" class=\"btn btn-primary\" type=\"button\" (click)=\"goBack()\"><i class=\"fa fa-arrow-left\"></i></button></div>\r\n    </div>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n    <div *ngIf=\"currentMedicalService\" class=\"container\" id=\"details\">\r\n        <div class=\"jumbotron\">\r\n            <h1>{{ currentMedicalService.name }}</h1>\r\n        </div>\r\n        <div class=\"container\">\r\n            <div class=\"card\" id=\"medicalServiceDetails\">\r\n                <h4><b>Details:</b></h4>\r\n                <h5><b>Domain: </b>{{currentMedicalService.domain}}</h5>\r\n                <h5><b>Description: </b>{{ currentMedicalService.description }}</h5>\r\n                <h5><b>Minutes: </b>{{ currentMedicalService.minutes }}</h5>\r\n                <h5><b>Price: </b>{{ currentMedicalService.price }}</h5>\r\n                <h5><b>Doctors: </b> </h5>\r\n                <!--<div *ngFor=\"let staff of currentMedicalService.staffs\">\r\n                    <p>{{staff.position}}: {{staff.firstName}} {{staff.lastName}}</p>\r\n                </div>-->\r\n            </div>\r\n        </div>\r\n        <div class=\"row\" id=\"medicalService-details-btn\">\r\n\r\n            <div *ngIf=\"isUserLoggedIn\" class=\"col-sm-6\" id=\"crud-medicalService-btn\">\r\n                <button *ngIf=\"currentUserRole == 'Admin'\" class=\"btn btn-outline-danger btn-lg\" type=\"button\"\r\n                        (click)=\"deleteMedicalService()\">\r\n                    Delete medical service\r\n                </button>\r\n\r\n                <button *ngIf=\"currentUserRole == 'Admin'\" class=\"btn btn-outline-warning btn-lg\" type=\"button\"\r\n                        (click)=\"updateMedicalService()\">\r\n                    Update medical service\r\n                </button>\r\n                <button *ngIf=\"currentUserRole == 'Moderator'\" class=\"btn btn-outline-success btn-lg\" type=\"button\"\r\n                        (click)=\"staffFormToggle()\">\r\n                    Add a doctor\r\n                </button>\r\n            </div>\r\n        </div>\r\n        <div *ngIf=\"isOpen\">\r\n            <app-update-medical-service [selectedMedicalService]=\"currentMedicalService\" [submitLabel]=\"label\" (onSubmit)=\"reloadData()\">\r\n            </app-update-medical-service>\r\n        </div>\r\n\r\n        <h4 *ngIf=\"currentMedicalService.staffs.length > 0\">Clinic staff:</h4>\r\n        <table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"currentMedicalService.staffs.length > 0\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Position</th>\r\n                    <th>Firstname</th>\r\n                    <th>Lastname</th>\r\n                    <th></th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let staff of currentMedicalService.staffs\">\r\n                    <td>{{ staff.position }}</td>\r\n                    <td>{{ staff.firstName }}</td>\r\n                    <td>{{ staff.lastName }}</td>\r\n                    <td>\r\n                        <a *ngIf=\"currentUserRole == 'Moderator'\" class=\"btn btn-outline-primary btn-sm mr-3\"\r\n                           (click)=\"updateStaff(staff)\">Update</a>\r\n                        <a *ngIf=\"currentUserRole == 'Moderator'\" class=\"btn btn-outline-danger btn-sm\"\r\n                           (click)=\"deleteStaff(staff.staffId)\" (onSubmit)=\"reloadData()\">Delete</a>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n        <div *ngIf=\"addStaffMode\">\r\n            <app-add-staff [currentMedicalService]=\"currentMedicalService\" (onSubmit)=\"addStaffPassChild()\"\r\n                             (onClose)=\"closeFormAtCancel()\">\r\n            </app-add-staff>\r\n        </div>\r\n        <div *ngIf=\"updateStaffMode\">\r\n            <app-update-staff [currentMedicalService]=\"currentMedicalService\" [staff]=\"staffs\"\r\n                                 (onSubmit)=\"reloadData()\" (onClose)=\"closeUpdateFormAtCancel()\">\r\n            </app-update-staff>\r\n            <hr />\r\n        </div>\r\n        <div><hr /> <button id=\"backBtn\" class=\"btn btn-primary\" type=\"button\" (click)=\"goBack()\"><i class=\"fa fa-arrow-left\"></i></button></div>\r\n    </div>\r\n\r\n");
 
 /***/ }),
 
@@ -61,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Medical services</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/medical-service-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Search…\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Search\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"searchText\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let service of services\" class=\"col-md-4 col-sm-6 service\" (click)=\"id = service.id\">\r\n        \r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h4>{{ service[0].domain }}</h4>\r\n            </div>\r\n            <div *ngFor=\"let item of service\" class=\"card-body\">\r\n            <p>{{ item.type }}</p>\r\n            <p>{{ item.description | slice:0:50 }}...</p>\r\n            <p>\r\n               <a class=\"btn btn-primary\" [routerLink]=\"['/medical-service-list/', item.id]\">Details</a>\r\n            </p>\r\n            <hr/>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Medical services</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/medical-service-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Search…\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Search\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"searchText\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let service of services\" class=\"col-md-4 col-sm-6 service\" (click)=\"id = service.id\">\r\n        \r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h4>{{ service[0].domain }}</h4>\r\n            </div>\r\n            <div *ngFor=\"let item of service\" class=\"card-body\">\r\n            <p><b>{{ item.name }}</b></p>\r\n            <p>{{ item.description | slice:0:50 }}...</p>\r\n            <p>\r\n               <a class=\"btn btn-primary\" [routerLink]=\"['/medical-service-list/', item.id]\">Details</a>\r\n            </p>\r\n            <hr/>\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -75,19 +88,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<p>Update medical service:</p>\r\n<form [formGroup]=\"form\">\r\n    <div class=\"form-group\">\r\n        <label>Domain</label>\r\n        <select name=\"domain\" formControlName=\"domain\" class=\"form-control\">\r\n            <option value=\"Orthopedics\">Orthopedics</option>\r\n            <option value=\"Cardiology\">Cardiology</option>\r\n            <option value=\"Physiokinetotherapy\">Physiokinetotherapy</option>\r\n            <option value=\"Surgery\">Surgery</option>\r\n        </select>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Name</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" formControlName=\"name\">\r\n        <span *ngIf=\"errorMessage.Name\" class=\"text-danger\"><small>{{errorMessage.Name}}</small> </span>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Description</label>\r\n        <textarea name=\"description\"\r\n                  class=\"form-control\"\r\n                  formControlName=\"description\"\r\n                  required>\r\n    </textarea>\r\n        <span *ngIf=\"errorMessage.Description\" class=\"text-danger\"><small>{{errorMessage.Description}}</small> </span>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Minutes</label>\r\n        <input type=\"number\" class=\"form-control\" id=\"minutes\" name=\"minutes\" formControlName=\"minutes\">\r\n        <span *ngIf=\"errorMessage.Minutes\" class=\"text-danger\"><small>{{errorMessage.Minutes}}</small> </span>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Price</label>\r\n        <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" formControlName=\"price\">\r\n    </div>\r\n    <button type=\"submit\" class=\"btn btn-success\" (click)=\"submitData()\">{{ submitLabel }}</button>\r\n    <button class=\"btn btn-secondary\" type=\"button\" routerLink=\"/medical-service-list\">Cancel</button>\r\n</form>\r\n");
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/counter/counter.component.html":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/counter/counter.component.html ***!
-  \**************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1>Counter</h1>\r\n\r\n<p>This is a simple example of an Angular component.</p>\r\n\r\n<p aria-live=\"polite\">Current count: <strong>{{ currentCount }}</strong></p>\r\n\r\n<button class=\"btn btn-primary\" (click)=\"incrementCounter()\">Increment</button>\r\n");
 
 /***/ }),
 
@@ -126,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n<header>\r\n    <nav id=\"nav-style\"\r\n         class=\"navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3\">\r\n        <div class=\"container\">\r\n            <a class=\"navbar-brand\" [routerLink]=\"['/']\">\r\n                <i class=\"fa fa-medkit\" aria-hidden=\"true\"></i>\r\n                Medical Clinic\r\n            </a>\r\n            <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\".navbar-collapse\"\r\n                    aria-label=\"Toggle navigation\" [attr.aria-expanded]=\"isExpanded\" (click)=\"toggle()\">\r\n                <span class=\"navbar-toggler-icon\"></span>\r\n            </button>\r\n            <div class=\"navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse\" [ngClass]=\"{ show: isExpanded }\">\r\n                <ul class=\"navbar-nav flex-grow\">\r\n\r\n                    <li class=\"nav-item mr-3\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/add-medical-service']\">\r\n                            <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n                            Add a medical service\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"nav-item mr-3\" [routerLinkActive]=\"['link-active']\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/medical-service-list']\">\r\n                            <i class=\"fa fa-medkit\" aria-hidden=\"true\"></i>\r\n                            Medical services\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"nav-item mr-3\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/staff-list']\">\r\n                            <i class=\"fa fa-user-md\" aria-hidden=\"true\"></i>\r\n                            Clinic staff\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"nav-item mr-3\" [routerLinkActive]=\"['link-active']\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/appointments']\">\r\n                            <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i>\r\n                            Make an appointment\r\n                        </a>\r\n                    </li>\r\n\r\n                    <li class=\"nav-item\" [routerLinkActive]=\"['link-active']\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/login']\">\r\n                            <i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>\r\n                            Login\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <div class=\"dropdown mt-4\" dropdown>\r\n                            <a class=\"dropdown-toggle text-dark\" dropdownToggle>\r\n                                <i class=\"fa fa-user-circle-o\" aria-hidden=\"true\"></i>\r\n                                Welcome {{loggedInUser | titlecase}}\r\n                            </a>\r\n                            <div class=\"dropdown-menu mt-4\" *dropdownMenu>\r\n                                <a class=\"dropdown-item\" [routerLink]=\"['/profile']\">\r\n                                    <i class=\"fa fa-user\"></i> Edit Profile\r\n                                </a>\r\n                                <div class=\"dropdown-divider\"></div>\r\n                                <a class=\"dropdown-item\" (click)=\"logout()\">\r\n                                    <i class=\"fa fa-sign-out\"></i>Logout\r\n                                </a>\r\n                            </div>\r\n                        </div>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </nav>\r\n</header>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<header>\r\n    <nav id=\"nav-style\"\r\n         class=\"navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3\">\r\n        <div class=\"container\">\r\n            <a class=\"navbar-brand\" [routerLink]=\"['/']\">\r\n                <i class=\"fa fa-medkit\" aria-hidden=\"true\"></i>\r\n                Medical Clinic\r\n            </a>\r\n            <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\".navbar-collapse\"\r\n                    aria-label=\"Toggle navigation\" [attr.aria-expanded]=\"isExpanded\" (click)=\"toggle()\">\r\n                <span class=\"navbar-toggler-icon\"></span>\r\n            </button>\r\n            <div class=\"navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse\" [ngClass]=\"{ show: isExpanded }\">\r\n                <ul class=\"navbar-nav flex-grow\">\r\n\r\n                    <li *ngIf=\"loggedIn()\" class=\"nav-item mr-3\">\r\n                        <a *appHasRole=\"['Admin']\" class=\"nav-link text-dark\" [routerLink]=\"['/add-medical-service']\">\r\n                            <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n                            Add a medical service\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"nav-item mr-3\" [routerLinkActive]=\"['link-active']\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/medical-service-list']\">\r\n                            <i class=\"fa fa-medkit\" aria-hidden=\"true\"></i>\r\n                            Medical services\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"nav-item mr-3\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/staff-list']\">\r\n                            <i class=\"fa fa-user-md\" aria-hidden=\"true\"></i>\r\n                            Clinic staff\r\n                        </a>\r\n                    </li>\r\n                    <li *ngIf=\"loggedIn()\" class=\"nav-item mr-3\" [routerLinkActive]=\"['link-active']\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/appointment']\">\r\n                            <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i>\r\n                            Make an appointment\r\n                        </a>\r\n                    </li>\r\n\r\n                    <li *ngIf=\"!loggedIn()\" class=\"nav-item\" [routerLinkActive]=\"['link-active']\">\r\n                        <a class=\"nav-link text-dark\" [routerLink]=\"['/login']\">\r\n                            <i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>\r\n                            Login\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <div *ngIf=\"loggedIn()\" class=\"dropdown mt-4\" dropdown>\r\n                            <a class=\"dropdown-toggle text-dark\" dropdownToggle>\r\n                                <i class=\"fa fa-user-circle-o\" aria-hidden=\"true\"></i>\r\n                                Welcome {{loggedInUser | titlecase}}\r\n                            </a>\r\n                            <div class=\"dropdown-menu mt-4\" *dropdownMenu>\r\n                                <a class=\"dropdown-item\" [routerLink]=\"['/user-profile']\">\r\n                                    <i class=\"fa fa-user\"></i> Edit Profile\r\n                                </a>\r\n                                <div class=\"dropdown-divider\"></div>\r\n                                <a class=\"dropdown-item\" (click)=\"logout()\">\r\n                                    <i class=\"fa fa-sign-out\"></i>Logout\r\n                                </a>\r\n                            </div>\r\n                        </div>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </nav>\r\n</header>\r\n\r\n");
 
 /***/ }),
 
@@ -152,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"currentStaff\" class=\"container\" id=\"details\">\r\n    <div class=\"jumbotron\">\r\n        <h2>{{ currentStaff.firstName }} {{currentStaff.lastName}}</h2>\r\n    </div>\r\n    <div class=\"container\">\r\n        <div class=\"card\" id=\"staffDetails\">\r\n            <h4><b>Details:</b></h4>\r\n            <h5><b>Position: </b>{{currentStaff.position}}</h5>\r\n            <h5><b>Age:</b>{{ currentStaff.age }}</h5>\r\n            <h5><b>Date of employment: </b>{{ currentStaff.employmentDate }}</h5>\r\n            <h5><b>Salary: </b>{{ currentStaff.salary }}</h5>\r\n        </div>\r\n    </div>\r\n    <!--<div class=\"row\" id=\"staff-details-btn\">\r\n\r\n        <div class=\"col-sm-6\" id=\"crud-staff-btn\">\r\n            <button class=\"btn btn-outline-danger btn-lg\" type=\"button\"\r\n                    (click)=\"deleteStaff()\">\r\n                Delete clinic staff\r\n            </button>\r\n\r\n            <button class=\"btn btn-outline-warning btn-lg\" type=\"button\"\r\n                    (click)=\"updateStaff()\">\r\n                Update clinic staff\r\n            </button>\r\n        </div>\r\n    </div>\r\n    <div *ngIf=\"isOpen\">\r\n        <app-update-staff [selectedStaff]=\"currentStaff\" [submitLabel]=\"label\" (onSubmit)=\"reloadData()\">\r\n        </app-update-staff>\r\n    </div>-->\r\n    <div><hr /> <button id=\"backBtn\" class=\"btn btn-primary\" type=\"button\" (click)=\"goBack()\"><i class=\"fa fa-arrow-left\"></i></button></div>\r\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"currentStaff\" class=\"container\" id=\"details\">\r\n    <div class=\"jumbotron\">\r\n        <h2>{{ currentStaff.firstName }} {{currentStaff.lastName}}</h2>\r\n    </div>\r\n    <div class=\"container\">\r\n        <div class=\"card\" id=\"staffDetails\">\r\n            <h4><b>Details:</b></h4>\r\n            <h5><b>Position: </b>{{currentStaff.position}}</h5>\r\n            <h5><b>Age:</b>{{ currentStaff.age }}</h5>\r\n            <h5><b>Date of employment: </b>{{ currentStaff.employmentDate }}</h5>\r\n            <h5><b>Salary: </b>{{ currentStaff.salary }}</h5>\r\n        </div>\r\n    </div>\r\n    <div><hr /> <button id=\"backBtn\" class=\"btn btn-primary\" type=\"button\" (click)=\"goBack()\"><i class=\"fa fa-arrow-left\"></i></button></div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Clinic Staff list</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/staff-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Search…\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Search\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"searchText\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let staff of staffs\" class=\"col-md-4 col-sm-6 staff\" (click)=\"id = staff.id\">\r\n\r\n            <div class=\"card\">\r\n                    <h5>{{ staff.position }}</h5>\r\n                    <p>{{ staff.firstName }} {{ staff.lastName }}</p>\r\n                    \r\n                    <p>\r\n                        <a class=\"btn btn-primary\" [routerLink]=\"['/staff-list/', staff.id]\">Details</a>\r\n                    </p>\r\n                    <hr />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"jumbotron\">\r\n        <h2 id=\"tableLabel\">Clinic Staff list</h2>\r\n\r\n        <div class=\"wmx12 mx-auto grid ai-center row\">\r\n            <form id=\"search\" role=\"search\" action=\"/staff-list\" method=\"get\"\r\n                  class=\"grid--cell fl-grow1 searchbar px12 js-searchbar \" autocomplete=\"off\">\r\n                <div class=\"ps-relative\">\r\n                    <input (keyup)=\"doSearch()\" name=\"searchText\" type=\"text\" placeholder=\"Search…\" value=\"\" autocomplete=\"off\"\r\n                           maxlength=\"150\" class=\"s-input s-input__search js-search-field \" aria-label=\"Search\"\r\n                           aria-controls=\"top-search\" data-controller=\"s-popover\" data-action=\"focus->s-popover#show\"\r\n                           data-s-popover-placement=\"bottom-start\" [(ngModel)]=\"searchText\">\r\n                    <svg aria-hidden=\"true\" class=\"s-input-icon s-input-icon__search svg-icon iconSearch\" width=\"18\" height=\"18\"\r\n                         viewBox=\"0 0 18 18\">\r\n                        <path d=\"M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z\">\r\n                        </path>\r\n                    </svg>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!isOpen\" class=\"row text-center\" style=\"display:flex; flex-wrap:wrap;\">\r\n        <div *ngFor=\"let staff of staffs\" class=\"col-md-4 col-sm-6 staff\" (click)=\"id = staff.id\">\r\n\r\n            <div class=\"card\">\r\n                    <h5>{{ staff.position }}</h5>\r\n                    <p>{{ staff.firstName }} {{ staff.lastName }}</p>\r\n                    \r\n                    <p *ngIf=\"currentUserRole == 'Admin' || currentUserRole == 'Moderator'\">\r\n                        <a class=\"btn btn-primary\" [routerLink]=\"['/staff-list/', staff.id]\">Details</a>\r\n                    </p>\r\n                    <hr />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n");
 
 /***/ }),
 
@@ -338,26 +338,46 @@ AddStaffComponent = __decorate([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/fesm2015/auth0-angular-jwt.js");
+/* harmony import */ var _services_authenticate_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/authenticate.service */ "./src/app/services/authenticate.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
+
+
 let AppComponent = class AppComponent {
-    constructor() {
+    constructor(authService) {
+        this.authService = authService;
         this.title = 'app';
+        this.jwtHelper = new _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_1__["JwtHelperService"]();
+    }
+    ngOnInit() {
+        const token = localStorage.getItem('token');
+        if (token) {
+            this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+            this.authService.changeLoggedInUser(this.authService.decodedToken.unique_name);
+        }
     }
 };
+AppComponent.ctorParameters = () => [
+    { type: _services_authenticate_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticateService"] }
+];
 AppComponent = __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
         selector: 'app-root',
         template: __importDefault(__webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default
-    })
+    }),
+    __metadata("design:paramtypes", [_services_authenticate_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticateService"]])
 ], AppComponent);
 
 
@@ -380,9 +400,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav-menu/nav-menu.component */ "./src/app/nav-menu/nav-menu.component.ts");
-/* harmony import */ var _counter_counter_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./counter/counter.component */ "./src/app/counter/counter.component.ts");
+/* harmony import */ var ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap/dropdown */ "./node_modules/ngx-bootstrap/dropdown/fesm2015/ngx-bootstrap-dropdown.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nav-menu/nav-menu.component */ "./src/app/nav-menu/nav-menu.component.ts");
 /* harmony import */ var _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home-page/home-page.component */ "./src/app/home-page/home-page.component.ts");
 /* harmony import */ var _component_medical_service_list_medical_service_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./component/medical-service-list/medical-service-list.component */ "./src/app/component/medical-service-list/medical-service-list.component.ts");
 /* harmony import */ var _component_medical_service_details_medical_service_details_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./component/medical-service-details/medical-service-details.component */ "./src/app/component/medical-service-details/medical-service-details.component.ts");
@@ -398,6 +418,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./services/clinic-staff.service */ "./src/app/services/clinic-staff.service.ts");
 /* harmony import */ var _services_authenticate_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/authenticate.service */ "./src/app/services/authenticate.service.ts");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/fesm2015/auth0-angular-jwt.js");
+/* harmony import */ var _has_role_directive__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./has-role.directive */ "./src/app/has-role.directive.ts");
+/* harmony import */ var _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./services/auth-guard.service */ "./src/app/services/auth-guard.service.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _appointment_appointment_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./appointment/appointment.component */ "./src/app/appointment/appointment.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -407,6 +431,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
+
+
+
 
 
 
@@ -438,9 +466,8 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-            _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_6__["NavMenuComponent"],
-            _counter_counter_component__WEBPACK_IMPORTED_MODULE_7__["CounterComponent"],
+            _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+            _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_7__["NavMenuComponent"],
             _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_8__["HomePageComponent"],
             _component_medical_service_list_medical_service_list_component__WEBPACK_IMPORTED_MODULE_9__["MedicalServiceListComponent"],
             _component_medical_service_details_medical_service_details_component__WEBPACK_IMPORTED_MODULE_10__["MedicalServiceDetailsComponent"],
@@ -452,13 +479,17 @@ AppModule = __decorate([
             _update_staff_update_staff_component__WEBPACK_IMPORTED_MODULE_16__["UpdateStaffComponent"],
             _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_17__["UserProfileComponent"],
             _login_login_component__WEBPACK_IMPORTED_MODULE_18__["LoginComponent"],
-            _register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"]
+            _register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"],
+            _has_role_directive__WEBPACK_IMPORTED_MODULE_23__["HasRoleDirective"],
+            _appointment_appointment_component__WEBPACK_IMPORTED_MODULE_26__["AppointmentComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"].withServerTransition({ appId: 'ng-cli-universal' }),
             _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
+            ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_5__["BsDropdownModule"].forRoot(),
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_25__["BrowserAnimationsModule"],
             _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_22__["JwtModule"].forRoot({
                 config: {
                     tokenGetter,
@@ -468,31 +499,93 @@ AppModule = __decorate([
             }),
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot([
                 { path: '', component: _home_page_home_page_component__WEBPACK_IMPORTED_MODULE_8__["HomePageComponent"], pathMatch: 'full' },
-                { path: 'counter', component: _counter_counter_component__WEBPACK_IMPORTED_MODULE_7__["CounterComponent"] },
                 { path: 'medical-service-list', component: _component_medical_service_list_medical_service_list_component__WEBPACK_IMPORTED_MODULE_9__["MedicalServiceListComponent"] },
                 { path: 'medical-service-list/:id', component: _component_medical_service_details_medical_service_details_component__WEBPACK_IMPORTED_MODULE_10__["MedicalServiceDetailsComponent"] },
                 { path: 'update-medical-service/:id', component: _component_update_medical_service_update_medical_service_component__WEBPACK_IMPORTED_MODULE_12__["UpdateMedicalServiceComponent"] },
-                { path: 'add-medical-service', component: _component_add_medical_service_add_medical_service_component__WEBPACK_IMPORTED_MODULE_11__["AddMedicalServiceComponent"] },
+                { path: 'add-medical-service', component: _component_add_medical_service_add_medical_service_component__WEBPACK_IMPORTED_MODULE_11__["AddMedicalServiceComponent"],
+                    data: { roles: ['Admin'] },
+                    canActivate: [_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"]]
+                },
                 { path: 'staff-list', component: _staff_list_staff_list_component__WEBPACK_IMPORTED_MODULE_13__["StaffListComponent"] },
                 { path: 'staff-list/:id', component: _staff_details_staff_details_component__WEBPACK_IMPORTED_MODULE_14__["StaffDetailsComponent"] },
-                { path: 'add-staff', component: _add_staff_add_staff_component__WEBPACK_IMPORTED_MODULE_15__["AddStaffComponent"] },
+                {
+                    path: 'add-staff', component: _add_staff_add_staff_component__WEBPACK_IMPORTED_MODULE_15__["AddStaffComponent"],
+                    data: { roles: ['Admin', 'Moderator'] },
+                    canActivate: [_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"]]
+                },
                 { path: 'update-staff', component: _update_staff_update_staff_component__WEBPACK_IMPORTED_MODULE_16__["UpdateStaffComponent"] },
                 { path: 'user-profile', component: _user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_17__["UserProfileComponent"] },
                 { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_18__["LoginComponent"] },
-                { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"] }
+                { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"] },
+                { path: 'appointment', component: _appointment_appointment_component__WEBPACK_IMPORTED_MODULE_26__["AppointmentComponent"] }
             ])
         ],
         entryComponents: [
-            _component_add_medical_service_add_medical_service_component__WEBPACK_IMPORTED_MODULE_11__["AddMedicalServiceComponent"],
-            _component_update_medical_service_update_medical_service_component__WEBPACK_IMPORTED_MODULE_12__["UpdateMedicalServiceComponent"],
+        //AddMedicalServiceComponent,
+        //UpdateMedicalServiceComponent,
         ],
         providers: [
             _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_20__["ClinicStaffService"],
-            _services_authenticate_service__WEBPACK_IMPORTED_MODULE_21__["AuthenticateService"]
+            _services_authenticate_service__WEBPACK_IMPORTED_MODULE_21__["AuthenticateService"],
         ],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/appointment/appointment.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/appointment/appointment.component.css ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcG9pbnRtZW50L2FwcG9pbnRtZW50LmNvbXBvbmVudC5jc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/appointment/appointment.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/appointment/appointment.component.ts ***!
+  \******************************************************/
+/*! exports provided: AppointmentComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppointmentComponent", function() { return AppointmentComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+let AppointmentComponent = class AppointmentComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+AppointmentComponent = __decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+        selector: 'app-appointment',
+        template: __importDefault(__webpack_require__(/*! raw-loader!./appointment.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/appointment/appointment.component.html")).default,
+        styles: [__importDefault(__webpack_require__(/*! ./appointment.component.css */ "./src/app/appointment/appointment.component.css")).default]
+    }),
+    __metadata("design:paramtypes", [])
+], AppointmentComponent);
 
 
 
@@ -594,6 +687,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_medical_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/medical-service.service */ "./src/app/services/medical-service.service.ts");
 /* harmony import */ var _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/clinic-staff.service */ "./src/app/services/clinic-staff.service.ts");
+/* harmony import */ var _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/authenticate.service */ "./src/app/services/authenticate.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -610,20 +704,28 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 let MedicalServiceDetailsComponent = class MedicalServiceDetailsComponent {
-    constructor(route, router, service, staffService) {
+    constructor(route, router, service, staffService, authService) {
         this.route = route;
         this.router = router;
         this.service = service;
         this.staffService = staffService;
+        this.authService = authService;
         this.isOpen = false;
         this.label = 'Update';
         this.addStaffMode = false;
         this.updateStaffMode = false;
+        this.isUserLoggedIn = false;
     }
     ngOnInit() {
         this.medicalServiceId = Number(this.route.snapshot.paramMap.get('id'));
         this.getDetails();
+        this.isUserLoggedIn = this.authService.isLoggedIn();
+        if (this.isUserLoggedIn) {
+            this.loggedUser = this.authService.decodedToken.unique_name;
+        }
+        this.currentUserRole = this.authService.getUserRole();
     }
     getDetails() {
         this.service.getMedicalService(this.medicalServiceId).subscribe(result => {
@@ -648,7 +750,6 @@ let MedicalServiceDetailsComponent = class MedicalServiceDetailsComponent {
         this.router.navigateByUrl('/add-clinic-staff');
     }
     updateMedicalService() {
-        //this.router.navigateByUrl('/update-medical-service/' + this.medicalServiceId);
         if (this.isOpen === false) {
             this.isOpen = true;
         }
@@ -692,7 +793,8 @@ MedicalServiceDetailsComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
     { type: _services_medical_service_service__WEBPACK_IMPORTED_MODULE_2__["MedicalServiceService"] },
-    { type: _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"] }
+    { type: _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"] },
+    { type: _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticateService"] }
 ];
 MedicalServiceDetailsComponent = __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -703,7 +805,8 @@ MedicalServiceDetailsComponent = __decorate([
     __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
         _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
         _services_medical_service_service__WEBPACK_IMPORTED_MODULE_2__["MedicalServiceService"],
-        _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"]])
+        _services_clinic_staff_service__WEBPACK_IMPORTED_MODULE_3__["ClinicStaffService"],
+        _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticateService"]])
 ], MedicalServiceDetailsComponent);
 
 
@@ -737,6 +840,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_medical_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/medical-service.service */ "./src/app/services/medical-service.service.ts");
+/* harmony import */ var _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/authenticate.service */ "./src/app/services/authenticate.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -756,11 +860,13 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 let MedicalServiceListComponent = class MedicalServiceListComponent {
-    constructor(router, activatedRoute, medicalService, http, baseUrl) {
+    constructor(router, activatedRoute, medicalService, authService, http, baseUrl) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.medicalService = medicalService;
+        this.authService = authService;
         this.http = http;
         this.baseUrl = baseUrl;
         this.isOpen = false;
@@ -768,6 +874,8 @@ let MedicalServiceListComponent = class MedicalServiceListComponent {
     }
     ngOnInit() {
         this.getMedicalServices();
+        this.isLoggedIn = this.authService.isLoggedIn();
+        this.currentUserRole = this.authService.getUserRole();
     }
     doSearch() {
         this.router.navigate([], {
@@ -787,6 +895,13 @@ let MedicalServiceListComponent = class MedicalServiceListComponent {
             this.router.navigate(['/medical-service-list']);
         }
     }
+    reloadData(action) {
+        this.id = undefined;
+        this.isOpen = false;
+        if (action !== 'Cancel') {
+            this.getMedicalServices();
+        }
+    }
     getMedicalServiceById(id) {
         return this.services.find(medicalService => medicalService.id === id);
     }
@@ -795,6 +910,7 @@ MedicalServiceListComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
     { type: _services_medical_service_service__WEBPACK_IMPORTED_MODULE_3__["MedicalServiceService"] },
+    { type: _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticateService"] },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: ['BASE_URL',] }] }
 ];
@@ -804,10 +920,11 @@ MedicalServiceListComponent = __decorate([
         template: __importDefault(__webpack_require__(/*! raw-loader!./medical-service-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/component/medical-service-list/medical-service-list.component.html")).default,
         styles: [__importDefault(__webpack_require__(/*! ./medical-service-list.component.css */ "./src/app/component/medical-service-list/medical-service-list.component.css")).default]
     }),
-    __param(4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])('BASE_URL')),
+    __param(5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])('BASE_URL')),
     __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
         _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
         _services_medical_service_service__WEBPACK_IMPORTED_MODULE_3__["MedicalServiceService"],
+        _services_authenticate_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticateService"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], String])
 ], MedicalServiceListComponent);
 
@@ -931,46 +1048,6 @@ UpdateMedicalServiceComponent = __decorate([
 
 /***/ }),
 
-/***/ "./src/app/counter/counter.component.ts":
-/*!**********************************************!*\
-  !*** ./src/app/counter/counter.component.ts ***!
-  \**********************************************/
-/*! exports provided: CounterComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CounterComponent", function() { return CounterComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-
-let CounterComponent = class CounterComponent {
-    constructor() {
-        this.currentCount = 0;
-    }
-    incrementCounter() {
-        this.currentCount++;
-    }
-};
-CounterComponent = __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-        selector: 'app-counter-component',
-        template: __importDefault(__webpack_require__(/*! raw-loader!./counter.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/counter/counter.component.html")).default
-    })
-], CounterComponent);
-
-
-
-/***/ }),
-
 /***/ "./src/app/custom-validator.ts":
 /*!*************************************!*\
   !*** ./src/app/custom-validator.ts ***!
@@ -1015,6 +1092,78 @@ class CustomValidator {
         };
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/app/has-role.directive.ts":
+/*!***************************************!*\
+  !*** ./src/app/has-role.directive.ts ***!
+  \***************************************/
+/*! exports provided: HasRoleDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HasRoleDirective", function() { return HasRoleDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_authenticate_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/authenticate.service */ "./src/app/services/authenticate.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+let HasRoleDirective = class HasRoleDirective {
+    constructor(authService, viewContainerRef, templateRef) {
+        this.authService = authService;
+        this.viewContainerRef = viewContainerRef;
+        this.templateRef = templateRef;
+        this.isVisible = false;
+    }
+    ngOnInit() {
+        const userRoles = this.authService.decodedToken.role;
+        if (!userRoles) {
+            this.viewContainerRef.clear();
+        }
+        if (this.authService.roleMatch(this.appHasRole)) {
+            if (!this.isVisible) {
+                this.isVisible = true;
+                this.viewContainerRef.createEmbeddedView(this.templateRef);
+            }
+            else {
+                this.isVisible = false;
+                this.viewContainerRef.clear();
+            }
+        }
+    }
+};
+HasRoleDirective.ctorParameters = () => [
+    { type: _services_authenticate_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticateService"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }
+];
+__decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+    __metadata("design:type", Array)
+], HasRoleDirective.prototype, "appHasRole", void 0);
+HasRoleDirective = __decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
+        selector: '[appHasRole]'
+    }),
+    __metadata("design:paramtypes", [_services_authenticate_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticateService"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]])
+], HasRoleDirective);
+
 
 
 /***/ }),
@@ -1225,6 +1374,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavMenuComponent", function() { return NavMenuComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_authenticate_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/authenticate.service */ "./src/app/services/authenticate.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1238,25 +1389,50 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
+
+
 let NavMenuComponent = class NavMenuComponent {
-    constructor() {
+    constructor(authService, router) {
+        this.authService = authService;
+        this.router = router;
         this.isExpanded = false;
     }
-    ngOnInit() { }
+    ngOnInit() {
+        this.authService.currentLoggedInUser.subscribe(loggedInUser => {
+            this.loggedInUser = loggedInUser;
+            console.log(this.loggedInUser);
+        });
+    }
     collapse() {
         this.isExpanded = false;
     }
     toggle() {
         this.isExpanded = !this.isExpanded;
     }
+    loggedIn() {
+        return this.authService.isLoggedIn();
+    }
+    logout() {
+        this.authService.logout();
+        alert('User logged out!');
+        this.router.navigate(['/medical-service-list']);
+    }
+    testUserRoles() {
+        this.authService.roleMatch('Admin, Moderator');
+    }
 };
+NavMenuComponent.ctorParameters = () => [
+    { type: _services_authenticate_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticateService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
 NavMenuComponent = __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
         selector: 'app-nav-menu',
         template: __importDefault(__webpack_require__(/*! raw-loader!./nav-menu.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/nav-menu/nav-menu.component.html")).default,
         styles: [__importDefault(__webpack_require__(/*! ./nav-menu.component.css */ "./src/app/nav-menu/nav-menu.component.css")).default]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [_services_authenticate_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticateService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
 ], NavMenuComponent);
 
 
@@ -1379,6 +1555,81 @@ RegisterComponent = __decorate([
         _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
         _services_authenticate_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticateService"]])
 ], RegisterComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/auth-guard.service.ts":
+/*!************************************************!*\
+  !*** ./src/app/services/auth-guard.service.ts ***!
+  \************************************************/
+/*! exports provided: AuthGuardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuardService", function() { return AuthGuardService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _authenticate_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./authenticate.service */ "./src/app/services/authenticate.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+let AuthGuardService = class AuthGuardService {
+    constructor(authService, router) {
+        this.authService = authService;
+        this.router = router;
+    }
+    canActivate(next) {
+        const roles = next.data.roles;
+        if (roles) {
+            const match = this.authService.roleMatch(roles);
+            if (match) {
+                return true;
+            }
+            else {
+                this.router.navigate(['/medical-service-list']);
+                alert('You are not authorized to access this area');
+            }
+        }
+        if (this.authService.isLoggedIn()) {
+            return true;
+        }
+        this.router.navigate(['/medical-service-list']);
+        return false;
+    }
+    canActivateChild() {
+        if (this.authService.isLoggedIn) {
+            return true;
+        }
+        this.router.navigate(['/medical-service-list']);
+        return false;
+    }
+};
+AuthGuardService.ctorParameters = () => [
+    { type: _authenticate_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticateService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
+AuthGuardService = __decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+        providedIn: 'root'
+    }),
+    __metadata("design:paramtypes", [_authenticate_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticateService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+], AuthGuardService);
 
 
 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MedicalService} from '../../models/medical-service.model';
 import { MedicalServiceService } from '../../services/medical-service.service';
+import { AuthenticateService } from '../../services/authenticate.service';
 
 
 @Component({
@@ -16,10 +17,14 @@ export class MedicalServiceListComponent implements OnInit {
     public isOpen = false;
     public id: number;
     public searchText: string;
+    public isLoggedIn: boolean;
+    public currentUserRole: string;
+
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private medicalService: MedicalServiceService,
+        private authService: AuthenticateService,
         private http: HttpClient,
         @Inject('BASE_URL') private baseUrl: string
     ) {
@@ -30,6 +35,8 @@ export class MedicalServiceListComponent implements OnInit {
 
     ngOnInit() {
         this.getMedicalServices();
+        this.isLoggedIn = this.authService.isLoggedIn();
+        this.currentUserRole = this.authService.getUserRole();
     }
 
     doSearch() {
@@ -53,6 +60,14 @@ export class MedicalServiceListComponent implements OnInit {
                 , error => console.error(error)
             );
             this.router.navigate(['/medical-service-list']);
+        }
+    }
+
+    reloadData(action: any) {
+        this.id = undefined;
+        this.isOpen = false;
+        if (action !== 'Cancel') {
+            this.getMedicalServices();
         }
     }
 

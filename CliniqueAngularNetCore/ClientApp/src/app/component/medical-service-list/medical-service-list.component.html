@@ -28,7 +28,7 @@
                 <h4>{{ service[0].domain }}</h4>
             </div>
             <div *ngFor="let item of service" class="card-body">
-            <p>{{ item.type }}</p>
+            <p><b>{{ item.name }}</b></p>
             <p>{{ item.description | slice:0:50 }}...</p>
             <p>
                <a class="btn btn-primary" [routerLink]="['/medical-service-list/', item.id]">Details</a>

@@ -5,6 +5,7 @@ import { MedicalServiceService } from '../../services/medical-service.service';
 import { StaffForMedicalService } from '../../models/StaffForMedicalService';
 import { MedicalServiceDetail } from '../../models/MedicalServiceDetail';
 import { ClinicStaffService } from '../../services/clinic-staff.service';
+import { AuthenticateService } from '../../services/authenticate.service';
 
 @Component({
     selector: 'app-medical-service-details',
@@ -21,17 +22,31 @@ export class MedicalServiceDetailsComponent implements OnInit {
     public addStaffMode = false;
     public updateStaffMode = false;
 
+    public currentUserRole: string;
+    public isLoggedIn: boolean;
+    public isUserLoggedIn = false;
+    public loggedUser: string;
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private service: MedicalServiceService,
-        private staffService: ClinicStaffService
+        private staffService: ClinicStaffService,
+        private authService: AuthenticateService
     ) { }
 
     ngOnInit() {
         this.medicalServiceId = Number(this.route.snapshot.paramMap.get('id'));
         this.getDetails();
+
+        this.isUserLoggedIn = this.authService.isLoggedIn();
+        if (this.isUserLoggedIn) {
+            this.loggedUser = this.authService.decodedToken.unique_name;
+        }
+        this.currentUserRole = this.authService.getUserRole();
     }
+
+
     getDetails() {
         this.service.getMedicalService(this.medicalServiceId).subscribe(
             result => {
@@ -64,7 +79,6 @@ export class MedicalServiceDetailsComponent implements OnInit {
     }
 
     updateMedicalService() {
-        //this.router.navigateByUrl('/update-medical-service/' + this.medicalServiceId);
         if (this.isOpen === false) {
             this.isOpen = true;
         } else {

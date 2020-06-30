@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using AutoMapper;
 using CliniqueAngularNetCore.Helpers;
 using CliniqueAngularNetCore.Models;
@@ -41,9 +42,9 @@ namespace CliniqueAngularNetCore.Controllers
                 if (response == null)
                     return BadRequest(new { message = "Username or password is incorrect" });
 
-            //var userToReturn = _mapper.Map<UserWithToken>(response);
+            var userToReturn = _mapper.Map<UserWithToken>(response);
 
-            return Ok(response);
+            return Ok(userToReturn);
         }
 
         /// <summary>
@@ -90,6 +91,11 @@ namespace CliniqueAngularNetCore.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            {
+                return Unauthorized();
+            }
+
             var user = _userService.GetById(id);
             var model = _mapper.Map<UserDto>(user);
             return Ok(model);

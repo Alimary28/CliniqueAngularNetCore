@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateService } from '../services/authenticate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class NavMenuComponent implements OnInit{
 
     isExpanded = false;
-    constructor() { }
+    loggedInUser: string;
 
-    ngOnInit() { }
+    constructor(
+        private authService: AuthenticateService,
+        private router: Router
+    ) { }
+
+    ngOnInit() {
+        this.authService.currentLoggedInUser.subscribe(loggedInUser => {
+            this.loggedInUser = loggedInUser;
+            console.log(this.loggedInUser);
+        });
+    }
 
   collapse() {
     this.isExpanded = false;
@@ -18,5 +30,19 @@ export class NavMenuComponent implements OnInit{
 
   toggle() {
     this.isExpanded = !this.isExpanded;
-  }
+    }
+
+  loggedIn() {
+        return this.authService.isLoggedIn();
+    }
+
+  logout() {
+     this.authService.logout();
+     alert('User logged out!');
+     this.router.navigate(['/medical-service-list']);
+    }
+
+    testUserRoles() {
+        this.authService.roleMatch('Admin, Moderator');
+    }
 }

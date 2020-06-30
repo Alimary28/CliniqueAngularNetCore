@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CliniqueAngularNetCore.Models;
 using CliniqueAngularNetCore.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CliniqueAngularNetCore.Controllers
 {
@@ -58,7 +59,8 @@ namespace CliniqueAngularNetCore.Controllers
         /// <returns>The clinic staff object with all its properties</returns>
         /// <response code="200">Returns 200 if the request was succesfully completed</response>
         /// <response code="404">Returns Not Found if the object is null</response>
-        
+
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -84,6 +86,7 @@ namespace CliniqueAngularNetCore.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -122,7 +125,8 @@ namespace CliniqueAngularNetCore.Controllers
         /// </summary>
         /// <param name="id">The id of the object for remove</param>
         /// <returns>Return the deleted object</returns>
-        
+
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

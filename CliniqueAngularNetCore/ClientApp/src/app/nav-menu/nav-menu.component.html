@@ -14,8 +14,8 @@
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
                 <ul class="navbar-nav flex-grow">
 
-                    <li class="nav-item mr-3">
-                        <a class="nav-link text-dark" [routerLink]="['/add-medical-service']">
+                    <li *ngIf="loggedIn()" class="nav-item mr-3">
+                        <a *appHasRole="['Admin']" class="nav-link text-dark" [routerLink]="['/add-medical-service']">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             Add a medical service
                         </a>
@@ -32,27 +32,27 @@
                             Clinic staff
                         </a>
                     </li>
-                    <li class="nav-item mr-3" [routerLinkActive]="['link-active']">
-                        <a class="nav-link text-dark" [routerLink]="['/appointments']">
+                    <li *ngIf="loggedIn()" class="nav-item mr-3" [routerLinkActive]="['link-active']">
+                        <a class="nav-link text-dark" [routerLink]="['/appointment']">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                             Make an appointment
                         </a>
                     </li>
 
-                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                    <li *ngIf="!loggedIn()" class="nav-item" [routerLinkActive]="['link-active']">
                         <a class="nav-link text-dark" [routerLink]="['/login']">
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                             Login
                         </a>
                     </li>
                     <li>
-                        <div class="dropdown mt-4" dropdown>
+                        <div *ngIf="loggedIn()" class="dropdown mt-4" dropdown>
                             <a class="dropdown-toggle text-dark" dropdownToggle>
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                 Welcome {{loggedInUser | titlecase}}
                             </a>
                             <div class="dropdown-menu mt-4" *dropdownMenu>
-                                <a class="dropdown-item" [routerLink]="['/profile']">
+                                <a class="dropdown-item" [routerLink]="['/user-profile']">
                                     <i class="fa fa-user"></i> Edit Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
