@@ -3,6 +3,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
+import { AppointmentDto } from '../models/appointmentDto';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { User } from '../models/user.model';
 export class AuthenticateService {
 
     private baseUrl = '/users';
+    private backendUrl = '/api/Appointments';
 
     jwtHelper = new JwtHelperService();
     decodedToken: any;

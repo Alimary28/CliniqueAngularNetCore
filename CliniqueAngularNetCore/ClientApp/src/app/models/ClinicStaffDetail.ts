@@ -7,4 +7,5 @@ export class ClinicStaff {
     employmentDate: string;
     salary: number;
     medicalServiceId: number;
+    fullName: string;
 }

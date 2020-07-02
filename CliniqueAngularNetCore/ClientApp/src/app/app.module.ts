@@ -26,6 +26,7 @@ import { HasRoleDirective } from './has-role.directive';
 import { AuthGuardService } from './services/auth-guard.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -48,7 +49,8 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     HasRoleDirective,
-    AppointmentComponent
+    AppointmentComponent,
+    AppointmentListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -84,7 +86,8 @@ export function tokenGetter() {
        { path: 'user-profile', component: UserProfileComponent },
        { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent },
-        { path: 'appointment', component: AppointmentComponent }
+        { path: 'appointment', component: AppointmentComponent },
+        { path: 'appointment-list/:id', component: AppointmentListComponent }
 
     ])
     ],

@@ -19,7 +19,7 @@ namespace CliniqueAngularNetCore.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Appointment>()
                 .HasIndex(a => new { a.ClinicStaffId, a.UserId })
-                .IsUnique(true);
+                .IsUnique(false);
         }
     }
 }

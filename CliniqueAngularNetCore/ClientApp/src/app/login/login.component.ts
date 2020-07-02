@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('token', user.token);
                 this.authService.decodeToken();
                 this.authService.changeLoggedInUser(user.username);
-                alert('Succesfully logged in!');
                 this.router.navigate(['/medical-service-list']);
             },
             err => alert('Invalid username or password!')

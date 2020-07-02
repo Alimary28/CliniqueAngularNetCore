@@ -43,8 +43,7 @@ namespace CliniqueAngularNetCore.Controllers
             var staffsList = await staffs.Select(s => new ClinicStaffForServices 
             {
                 Id = s.Id,
-                FirstName = s.FirstName,
-                LastName = s.LastName,
+                FullName = s.FullName,
                 Position = s.Position,
                 MedicalServiceId = s.MedicalServiceId
             }).ToListAsync();

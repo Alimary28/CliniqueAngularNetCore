@@ -1,5 +1,6 @@
 ﻿using CliniqueAngularNetCore.Helpers;
 using CliniqueAngularNetCore.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;

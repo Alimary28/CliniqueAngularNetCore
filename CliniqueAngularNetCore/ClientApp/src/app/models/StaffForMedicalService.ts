@@ -3,4 +3,5 @@ export class StaffForMedicalService {
     position: string;
     firstName: string;
     lastName: string;
+    fullName: string;
 } 

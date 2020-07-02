@@ -76,6 +76,7 @@ namespace CliniqueAngularNetCore
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             //services.AddControllersWithViews();
             services
                 .AddControllers()

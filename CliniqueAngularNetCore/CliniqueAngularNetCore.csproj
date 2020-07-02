@@ -62,6 +62,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\appointment.model.ts" />
+    <None Remove="ClientApp\src\app\models\appointmentDto.ts" />
     <None Remove="ClientApp\src\app\models\ClinicStaffDetail.ts" />
     <None Remove="ClientApp\src\app\models\medical-service.model.ts" />
     <None Remove="ClientApp\src\app\models\MedicalServiceDetail.ts" />
@@ -74,6 +76,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\appointment.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\appointmentDto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\ClinicStaffDetail.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\medical-service.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\MedicalServiceDetail.ts" />

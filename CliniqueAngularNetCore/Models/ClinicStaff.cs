@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CliniqueAngularNetCore.Models
 {
@@ -22,6 +23,16 @@ namespace CliniqueAngularNetCore.Models
         public int Salary { get; set; }
         public MedicalService MedicalService { get; set; }
         public long MedicalServiceId { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
 
     }
 }

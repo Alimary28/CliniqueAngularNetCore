@@ -66,7 +66,7 @@ export class UserProfileComponent implements OnInit {
             localStorage.setItem('loggedInUser', this.profileForm.value.username);
             this.authService.changeLoggedInUser(this.profileForm.value.username);
             this.router.navigate(['/medical-service-list']);
-        }, error => alert(error)
+        }, error => alert('User can not be updated!')
         );
     }
     goBack() {

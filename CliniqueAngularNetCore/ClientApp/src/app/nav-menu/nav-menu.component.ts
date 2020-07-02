@@ -11,6 +11,7 @@ export class NavMenuComponent implements OnInit{
 
     isExpanded = false;
     loggedInUser: string;
+    loggedUserId: number;
 
     constructor(
         private authService: AuthenticateService,
@@ -21,6 +22,7 @@ export class NavMenuComponent implements OnInit{
         this.authService.currentLoggedInUser.subscribe(loggedInUser => {
             this.loggedInUser = loggedInUser;
         });
+        this.loggedUserId = parseInt(this.authService.decodedToken.nameid);
     }
 
   collapse() {

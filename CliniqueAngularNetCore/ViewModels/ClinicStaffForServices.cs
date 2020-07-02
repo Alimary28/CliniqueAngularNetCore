@@ -10,6 +10,6 @@ namespace CliniqueAngularNetCore.ViewModels
         public Position Position { get; set; }
         public long MedicalServiceId { get; set; }
 
-
+        public string FullName { get; set; }
     }
 }

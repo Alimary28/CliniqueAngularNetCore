@@ -21,12 +21,14 @@ namespace CliniqueAngularNetCore.Controllers
             private IUserService _userService;
             private IMapper _mapper;
             private readonly AppSettings _appSettings;
+        private readonly CliniqueDbContext context;
 
-        public UsersController(IUserService userService, IMapper mapper, IOptions<AppSettings> appSettings)
+        public UsersController(IUserService userService, IMapper mapper, IOptions<AppSettings> appSettings, CliniqueDbContext dbContext)
             {
                 _userService = userService;
                 _mapper = mapper;
                 _appSettings = appSettings.Value;
+                 context = dbContext;
         }
         /// <summary>
         /// Authenticate a user
