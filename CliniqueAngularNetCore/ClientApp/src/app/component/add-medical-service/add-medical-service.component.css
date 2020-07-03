@@ -12,6 +12,13 @@ textarea {
     background-color: #c7bbbbc9;
 }
 
+.changeBackground {
+    margin-top: 2rem;
+    padding: 4rem;
+    background-color: #c7bbbbc9;
+    height: 100%;
+}
+
 @media screen and (min-width: 768px) {
     #add-medical-service-style .jumbotron {
         padding-top: 30px !important;

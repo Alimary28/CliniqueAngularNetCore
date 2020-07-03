@@ -9,6 +9,7 @@ using CliniqueAngularNetCore.Models;
 using CliniqueAngularNetCore.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper.Execution;
 
 namespace CliniqueAngularNetCore.Controllers
 {
@@ -55,7 +56,7 @@ namespace CliniqueAngularNetCore.Controllers
                 .Select(grp => grp.ToList())
                 .ToList();
 
-            return Ok(groupedDomainList);
+            return Ok(groupedDomainList); 
         }
         // GET: api/MedicalServices/5
         /// <summary>

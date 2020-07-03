@@ -25,7 +25,7 @@
 
             <div class="card">
                     <h5>{{ staff.position }}</h5>
-                    <p>{{ staff.firstName }} {{ staff.lastName }}</p>
+                    <p>{{ staff.fullName }}</p>
                     
                     <p *ngIf="currentUserRole == 'Moderator'">
                         <a class="btn btn-primary" [routerLink]="['/staff-list/', staff.id]">Details</a>

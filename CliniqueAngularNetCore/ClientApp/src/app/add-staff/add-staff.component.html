@@ -1,16 +1,42 @@
 <form [formGroup]="staffForm" (ngSubmit)="save()">
-        <div class="form-group">
-            <label for="firstName">Firstname</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName">
+    <div class="form-group">
+        <label for="firstName">Firstname</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName">
+        <div *ngIf="staffForm.controls['firstName'].invalid && (staffForm.controls['firstName'].dirty || staffForm.controls['firstName'].touched)"
+             class="text-danger">
+            <div *ngIf="staffForm.controls['firstName'].errors.required">
+                Firstname is required.
+            </div>
+            <div *ngIf="staffForm.controls['firstName'].errors.pattern">
+                Firstname must contain only letters.
+            </div>
         </div>
-        <div class="form-group">
-            <label>Lastname</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+    </div>
+    <div class="form-group">
+        <label>Lastname</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+        <div *ngIf="staffForm.controls['lastName'].invalid && (staffForm.controls['lastName'].dirty || staffForm.controls['lastName'].touched)"
+             class="text-danger">
+            <div *ngIf="staffForm.controls['lastName'].errors.required">
+                Lastname is required.
+            </div>
+            <div *ngIf="staffForm.controls['lastName'].errors.pattern">
+                Lastname must contain only letters.
+            </div>
         </div>
-        <div class="form-group">
-            <label>Age</label>
-            <input type="number" class="form-control" id="age" name="age" formControlName="age">
+    </div>
+    <div class="form-group">
+        <label>Age</label>
+        <input type="number" class="form-control" id="age" name="age" formControlName="age">
+        <div *ngIf="staffForm.controls['age'].invalid && (staffForm.controls['age'].dirty || staffForm.controls['age'].touched)" class="text-danger">
+            <div *ngIf="staffForm.controls['age'].errors.required">
+                Age is required.
+            </div>
+            <div *ngIf="staffForm.controls['age'].errors.min">
+                Age must be greater than 25.
+            </div>
         </div>
+    </div>
         <div class="form-group">
             <label>Position</label>
             <select name="position" formControlName="position" class="form-control">
@@ -22,17 +48,35 @@
                 <option value="Manager">Manager</option>
                 <option value="Surgeon">Surgeon</option>
             </select>
+            <div *ngIf="staffForm.controls['position'].invalid && (staffForm.controls['position'].dirty || staffForm.controls['position'].touched)" class="text-danger">
+                <div *ngIf="staffForm.controls['position'].errors.required">
+                    You must select a position.
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
             <label>Employment date</label>
             <input type="text" class="form-control" id="employmentDate" name="employmentDate" formControlName="employmentDate">
+            <div *ngIf="staffForm.controls['employmentDate'].invalid && (staffForm.controls['employmentDate'].dirty || staffForm.controls['employmentDate'].touched)" class="text-danger">
+                <div *ngIf="staffForm.controls['employmentDate'].errors.required">
+                    Date is required
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
             <label>Salary</label>
             <input type="number" class="form-control" id="salary" name="salary" formControlName="salary">
+            <div *ngIf="staffForm.controls['salary'].invalid && (staffForm.controls['salary'].dirty || staffForm.controls['salary'].touched)" class="text-danger">
+                <div *ngIf="staffForm.controls['salary'].errors.required">
+                    Salary is required.
+                </div>
+                <div *ngIf="staffForm.controls['salary'].errors.min">
+                    Salary must be greater than 3500.
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-success">Save</button>
+        <button type="submit" class="btn btn-success" [disabled]="!staffForm.valid">Save</button>
         <button class="btn btn-secondary" type="button" routerLink="/staff-list">Cancel</button>
     </form>

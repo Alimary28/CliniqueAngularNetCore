@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { MedicalService } from '../../models/medical-service.model';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicalServiceService } from '../../services/medical-service.service';
@@ -29,11 +29,11 @@ export class UpdateMedicalServiceComponent implements OnInit {
 
     initForm() {
         this.form = new FormGroup({
-            domain: new FormControl(this.selectedMedicalService.domain),
-            name: new FormControl(this.selectedMedicalService.name),
-            description: new FormControl(this.selectedMedicalService.description),
-            minutes: new FormControl(this.selectedMedicalService.minutes),
-            price: new FormControl(this.selectedMedicalService.price)
+            domain: new FormControl(this.selectedMedicalService.domain, Validators.required),
+            name: new FormControl(this.selectedMedicalService.name, Validators.required),
+            description: new FormControl(this.selectedMedicalService.description, Validators.required),
+            minutes: new FormControl(this.selectedMedicalService.minutes, [Validators.required, Validators.min(10)]),
+            price: new FormControl(this.selectedMedicalService.price, [Validators.required, Validators.min(10)])
         });
         this.form.updateValueAndValidity();
     }
@@ -58,7 +58,7 @@ export class UpdateMedicalServiceComponent implements OnInit {
                 this.service.updateMedicalService(medicalService.id, medicalService).subscribe(
                     _ => {
                         this.onSubmit.emit(this.submitLabel);
-                        alert("Medical service successfully updated");
+                        //alert("Medical service successfully updated");
                     },
                     error => {
                         alert(error);

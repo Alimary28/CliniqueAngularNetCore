@@ -9,8 +9,11 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.hidescrollbar {
-    overflow: hidden;
+.background-service {
+    background: url(https://doctorokz.com/wp-content/uploads/2018/02/bg1.png) no-repeat center center fixed;
+    background-size: cover;
+    min-width: 1024px;
+    width: 100%;
 }
 
 .navbar {
@@ -38,16 +41,6 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-
-/*.medical-list-background {
-    background: url(https://doctorokz.com/wp-content/uploads/2018/02/bg1.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-width: 1024px;
-    width: 100%;
-}*/
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)

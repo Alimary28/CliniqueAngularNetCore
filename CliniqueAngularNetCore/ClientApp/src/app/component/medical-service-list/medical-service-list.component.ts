@@ -19,7 +19,7 @@ export class MedicalServiceListComponent implements OnInit {
     public price: number;
     public isLoggedIn: boolean;
     public currentUserRole: string;
-
+   
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
@@ -34,6 +34,7 @@ export class MedicalServiceListComponent implements OnInit {
     }
 
     ngOnInit() {
+        
         this.getMedicalServices();
         this.isLoggedIn = this.authService.isLoggedIn();
         this.currentUserRole = this.authService.getUserRole();
@@ -53,7 +54,7 @@ export class MedicalServiceListComponent implements OnInit {
                 result => this.services = result
             );
         } else {
-            this.http.get<MedicalService[]>(this.baseUrl + 'api/MedicalServices').subscribe(result => {
+            this.medicalService.getMedicalServices().subscribe(result => {
                 this.services = result;
                 console.log(this.services);
             }

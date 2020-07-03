@@ -20,13 +20,13 @@
 }
 
 #details.container {
-    background-image: url(https://doctorokz.com/wp-content/uploads/2018/02/bg1.png);
+    /*background-image: url(https://doctorokz.com/wp-content/uploads/2018/02/bg1.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 100%;*/
     overflow: scroll;
 }
 

@@ -27,6 +27,11 @@ namespace CliniqueAngularNetCore.Controllers
         }
 
         // GET: api/Appointments
+        /// <summary>
+        /// Get a list with user appointments
+        /// </summary>
+        /// <param name="userId">The logged user id </param>
+        /// <returns>An enumerable of AppointmentDto</returns>
         [Authorize]
         [HttpGet("{userId}")]
         public async Task<ActionResult<IEnumerable<AppointmentDto>>> GetAppointments(long userId)
@@ -44,6 +49,11 @@ namespace CliniqueAngularNetCore.Controllers
         }
 
         // POST: api/Appointments
+        /// <summary>
+        /// Creates a new appointment
+        /// </summary>
+        /// <param name="appointment">The user appointment for register</param>
+        /// <returns>Returns Ok if the appointment was successfully created</returns>
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]

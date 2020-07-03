@@ -1,4 +1,4 @@
-<p>Update medical service:</p>
+
 <form [formGroup]="form">
     <div class="form-group">
         <label>Domain</label>
@@ -8,12 +8,22 @@
             <option value="Physiokinetotherapy">Physiokinetotherapy</option>
             <option value="Surgery">Surgery</option>
         </select>
+        <div *ngIf="form.controls['domain'].invalid && (form.controls['domain'].dirty || form.controls['domain'].touched)" class="text-danger">
+            <div *ngIf="form.controls['domain'].errors.required">
+                You must select a domain.
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" id="name" name="name" formControlName="name">
         <span *ngIf="errorMessage.Name" class="text-danger"><small>{{errorMessage.Name}}</small> </span>
+        <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="text-danger">
+            <div *ngIf="form.controls['name'].errors.required">
+                Name is required.
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
@@ -23,19 +33,38 @@
                   formControlName="description"
                   required>
     </textarea>
-        <span *ngIf="errorMessage.Description" class="text-danger"><small>{{errorMessage.Description}}</small> </span>
-    </div>
+        <div *ngIf="form.controls['description'].invalid && (form.controls['description'].dirty || form.controls['description'].touched)" class="text-danger">
+            <div *ngIf="form.controls['description'].errors.required">
+                Description is required.
+            </div>
+            </div>
+        </div>
 
     <div class="form-group">
         <label>Minutes</label>
         <input type="number" class="form-control" id="minutes" name="minutes" formControlName="minutes">
-        <span *ngIf="errorMessage.Minutes" class="text-danger"><small>{{errorMessage.Minutes}}</small> </span>
+        <div *ngIf="form.controls['minutes'].invalid && (form.controls['minutes'].dirty || form.controls['minutes'].touched)" class="text-danger">
+            <div *ngIf="form.controls['minutes'].errors.required">
+                Minutes are required.
+            </div>
+            <div *ngIf="form.controls['minutes'].errors.min">
+                Minutes value must be greater than 10.
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
         <label>Price</label>
         <input type="number" class="form-control" id="price" name="price" formControlName="price">
+        <div *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)" class="text-danger">
+            <div *ngIf="form.controls['price'].errors.required">
+                Price required.
+            </div>
+            <div *ngIf="form.controls['price'].errors.min">
+                Price must be greater than 10.
+            </div>
+        </div>
     </div>
-    <button type="submit" class="btn btn-success" (click)="submitData()">{{ submitLabel }}</button>
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="submitData()">{{ submitLabel }}</button>
     <button class="btn btn-secondary" type="button" routerLink="/medical-service-list">Cancel</button>
 </form>

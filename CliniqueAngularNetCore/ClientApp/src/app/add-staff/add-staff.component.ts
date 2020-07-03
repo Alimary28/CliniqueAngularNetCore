@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ClinicStaff } from '../models/ClinicStaffDetail';
 import { Router } from '@angular/router';
 import { MedicalServiceDetail } from '../models/MedicalServiceDetail';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ClinicStaffService } from '../services/clinic-staff.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -33,6 +33,31 @@ export class AddStaffComponent {
         private service: ClinicStaffService,
         private http: HttpClient
     ) { }
+
+
+    createStaffForm() {
+
+        this.staffForm = this.formBuilder.group({
+            firstName: [null, Validators.compose([
+                Validators.required,
+                Validators.pattern(/^[a-zA-Z ]*$/)
+            ])],
+            lastName: [null, Validators.compose([
+                Validators.required,
+                Validators.pattern(/^[a-zA-Z ]*$/)
+            ])],
+            age: ['', Validators.compose([
+                Validators.required,
+                Validators.min(25)
+            ])],
+            position: ['', Validators.required],
+            employmentDate: ['', Validators.required],
+            salary: ['', Validators.compose([
+                Validators.required,
+                Validators.min (3500)
+            ])]
+        });
+    }
 
     save() {
         const newStaff = this.staffForm.value as ClinicStaff;
